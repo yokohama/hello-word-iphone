@@ -7,13 +7,15 @@
 //
 
 #import "BookModel.h"
+#import "WordModel.h"
 
 @implementation BookModel
 
-@synthesize recodeId, title;
+@synthesize recodeId, title, words;
 
 -(id)init{
     self = [super initWithCreateSql:BOOK_CREATE_SQL];
+    words = [NSMutableArray array];
     return self;
 }
 
@@ -54,21 +56,37 @@
     [db close];
 }
 
--(void)create{
+-(int)create{
     NSString *sql = [[NSString alloc] initWithFormat:@"INSERT INTO books VALUES(NULL, '%@');", title];
     [db open];
     [db executeUpdate:sql];
+    int createRowId = [db lastInsertRowId];
     [db close];
+    
+    return createRowId;
 }
 
 -(void)rehash:(NSMutableArray *)books{
+    //現在のものを削除
     NSMutableArray *_books = [[[BookModel alloc]init] findAll];
     for (int i=0; i<[_books count]; i++){
-        BookModel *book = (BookModel *)_books[i];
-        [book destroy];
+        BookModel *oldBook = (BookModel *)_books[i];
+        [oldBook destroy];
     }
+    NSMutableArray *_words = [[[WordModel alloc]init] findAll];
+    for (int i=0; i<[_words count]; i++){
+        WordModel *oldWm = (WordModel *)_words[i];
+        [oldWm destroy];
+    }
+    
     for (int i=0; i<[books count]; i++){
-        [books[i] create];
+        BookModel *book = (BookModel *)books[i];
+        int bookId = [book create];
+        for (int iw=0; iw<[book.words count]; iw++) {
+            WordModel *wm = book.words[iw];
+            wm.bookId = bookId;
+            [wm create];
+        }
     }
 }
 

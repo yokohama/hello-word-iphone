@@ -11,18 +11,20 @@
 @interface BookModel : Db{
     int recodeId;
     NSString *title;
+    NSMutableArray *words;
 }
 
 #define BOOK_CREATE_SQL @"CREATE TABLE IF NOT EXISTS books (id INTEGER PRIMARY KEY, title TEXT);"
 
 @property(readwrite) int recodeId;
 @property(nonatomic, strong, readwrite) NSString *title;
+@property(nonatomic, strong, readwrite) NSMutableArray *words;
 
 -(id)init;
 -(BookModel *)find :(int)recordId;
 -(NSMutableArray *)findAll;
 -(void)destroy;
--(void)create;
+-(int)create;
 -(void)rehash :(NSMutableArray *)books;
 
 @end

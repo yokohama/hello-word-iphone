@@ -64,7 +64,7 @@
 -(void)update:(UIButton*)button{
     //WordModel *wm = [[WordModel alloc] initWithClone:wordModel.recode_id word:wordTf.text answer:answerTf.text];
     WordModel *wm = [[WordModel alloc] initWithValues:wordTf.text answer:answerTf.text];
-    wm.recode_id = wordModel.recode_id;
+    wm.recodeId = wordModel.recodeId;
     
     if ([[wm validate] count] > 0) {
         UIAlertView *alert = [[UIAlertView alloc]

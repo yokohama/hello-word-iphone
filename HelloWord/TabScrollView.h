@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface TabScrollView : UIView
+@interface TabScrollView : UIView{
+}
 
 @end

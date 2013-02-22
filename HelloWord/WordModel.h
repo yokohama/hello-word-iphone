@@ -12,13 +12,14 @@
 #import "Db.h"
 
 @interface WordModel : Db{
-    int recode_id;
+    int recodeId;
+    int bookId;
     NSString *word, *answer;
 }
 
-#define WORD_CREATE_SQL @"CREATE TABLE IF NOT EXISTS words (id INTEGER PRIMARY KEY, word TEXT, answer TEXT);"
+#define WORD_CREATE_SQL @"CREATE TABLE IF NOT EXISTS words (id INTEGER PRIMARY KEY, book_id INT, word TEXT, answer TEXT);"
 
-@property(readwrite) int recode_id;
+@property(readwrite) int recodeId, bookId;
 @property(nonatomic, strong, readwrite) NSString *word, *answer;
 
 -(id)init;
@@ -29,7 +30,9 @@
 -(WordModel *)isAlready;
 -(void)create;
 -(void)update;
+-(WordModel *)find :(int)_recodeId;
 -(NSMutableArray *)findAll;
+-(NSMutableArray *)findByBookId :(int)_bookId;
 -(void)destroy;
 
 @end

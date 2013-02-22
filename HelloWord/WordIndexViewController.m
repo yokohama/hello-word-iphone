@@ -38,6 +38,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    bookId = 1;
 	
     CGRect r = [[UIScreen mainScreen] bounds];
     CGFloat w = r.size.width;
@@ -102,7 +104,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     WordModel *wm = [[WordModel alloc] init];
-    records = [wm findAll];
+    records = [wm findByBookId:bookId];
     
     count.text = count.text = [NSString stringWithFormat:@"%d 件", [records count]];
     
@@ -126,11 +128,6 @@
 - (void)config{
     ConfigListViewController *cvc = [[ConfigListViewController alloc] initWithStyle:UITableViewStyleGrouped];
     [self.navigationController pushViewController:cvc animated:YES];
-    
-    /*
-    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-    [cvc.view addSubview:tableView];
-    */
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -141,7 +138,6 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     float y = scrollView.contentOffset.y;
     if (y < (-50.0)) {
-        NSLog(@"TODO:ここでリロード処理");
         ConfigModel *cm = [[ConfigModel alloc]init];
         if ([cm isRegisted]) {
             NSString *postData = [[NSString alloc] initWithFormat:@"user[email]=%@&user[password]=%@", cm.email, cm.password];
@@ -154,6 +150,7 @@
             [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
             [request setHTTPBody: myRequestData];
         
+            //TODO:戻り値使わないのに、変数に格納しないとワーニング。どういうこと？
             [[NSURLConnection alloc] initWithRequest:request delegate:self];
         } else {
             UIAlertView *alert = [[UIAlertView alloc]
@@ -218,17 +215,15 @@
     for (int i=0; i<[books count]; i++) {
         BookModel *bm = [[BookModel alloc]init];
         bm.title = [books[i] objectForKey:@"title"];
-        [newBooks addObject:bm];
         
-        //ここから
-        //NSLog(@"%@", [books[i] objectForKey:@"words"]);
-        
-        NSMutableArray *words = [books[i] objectForKey:@"words"];
-        for (int iw=0; iw<[words count]; iw++) {
-            //NSLog(@"=====%@", [words[i] objectForKey:@"word"]);
-            NSLog(@"%@", [words[iw] word]);
+        NSMutableArray *arrayWords = [books[i] objectForKey:@"words"];
+        for (int iw=0; iw<[arrayWords count]; iw++) {
+            NSDictionary *word = arrayWords[iw];
+            WordModel *wm = [[WordModel alloc] initWithValues:[word objectForKey:@"word"] answer:[word objectForKey:@"answer"]];
+            //NSLog(@"%@", wm.word);
+            [bm.words addObject:wm];
         }
-        //ここまで
+        [newBooks addObject:bm];
     }
     [[[BookModel alloc]init] rehash:newBooks];
     

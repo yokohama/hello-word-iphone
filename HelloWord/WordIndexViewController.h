@@ -14,6 +14,7 @@
     UITableView *index;
     UILabel *count;
     UIView *tabBar;
+    int bookId;
 }
 
 @property(nonatomic, strong, readwrite) NSMutableArray *records;
