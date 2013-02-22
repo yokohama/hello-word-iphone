@@ -1,0 +1,24 @@
+//
+//  WordTicketViewController.h
+//  HelloWord
+//
+//  Created by 横濱 悠平 on 13/02/07.
+//  Copyright (c) 2013年 横濱 悠平. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface WordTicketViewController : UIViewController{
+    BOOL isSurface;
+    UITextView *al;
+}
+
+@property int pageIndex, recordeCount;
+@property (retain, nonatomic) IBOutlet UILabel *pageLabel; 
+
+@property NSString *word, *answer;
+@property BOOL isSurface;
+
+- (void)setIndex:(int)index;
+
+@end

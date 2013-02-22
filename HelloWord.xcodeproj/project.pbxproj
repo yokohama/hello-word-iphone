@@ -1,0 +1,773 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		85213C6316BE95760007D484 /* WordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 85213C6216BE95760007D484 /* WordModel.m */; };
+		85213C6916BEA6370007D484 /* Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 85213C6816BEA6370007D484 /* Validation.m */; };
+		85213C8016C2B37D0007D484 /* WordEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85213C7F16C2B37D0007D484 /* WordEditViewController.m */; };
+		85299C5616C386A0000B5DBE /* WordTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85299C5516C386A0000B5DBE /* WordTicketViewController.m */; };
+		85299CAD16C3FDD8000B5DBE /* TextFieldFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 85299CAC16C3FDD8000B5DBE /* TextFieldFactory.m */; };
+		85A3274816BD55D100FC3B3F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85A3274716BD55D100FC3B3F /* UIKit.framework */; };
+		85A3274A16BD55D100FC3B3F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85A3274916BD55D100FC3B3F /* Foundation.framework */; };
+		85A3274C16BD55D100FC3B3F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85A3274B16BD55D100FC3B3F /* CoreGraphics.framework */; };
+		85A3275216BD55D100FC3B3F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 85A3275016BD55D100FC3B3F /* InfoPlist.strings */; };
+		85A3275416BD55D100FC3B3F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A3275316BD55D100FC3B3F /* main.m */; };
+		85A3275816BD55D100FC3B3F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A3275716BD55D100FC3B3F /* AppDelegate.m */; };
+		85A3275A16BD55D100FC3B3F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 85A3275916BD55D100FC3B3F /* Default.png */; };
+		85A3275C16BD55D100FC3B3F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85A3275B16BD55D100FC3B3F /* Default@2x.png */; };
+		85A3275E16BD55D100FC3B3F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85A3275D16BD55D100FC3B3F /* Default-568h@2x.png */; };
+		85A3276116BD55D100FC3B3F /* WordAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A3276016BD55D100FC3B3F /* WordAddViewController.m */; };
+		85A3276416BD55D100FC3B3F /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85A3276216BD55D100FC3B3F /* ViewController_iPhone.xib */; };
+		85A3276716BD55D100FC3B3F /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85A3276516BD55D100FC3B3F /* ViewController_iPad.xib */; };
+		85A3276F16BD55D100FC3B3F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85A3276E16BD55D100FC3B3F /* SenTestingKit.framework */; };
+		85A3277016BD55D100FC3B3F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85A3274716BD55D100FC3B3F /* UIKit.framework */; };
+		85A3277116BD55D100FC3B3F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85A3274916BD55D100FC3B3F /* Foundation.framework */; };
+		85A3277916BD55D100FC3B3F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 85A3277716BD55D100FC3B3F /* InfoPlist.strings */; };
+		85A3277C16BD55D100FC3B3F /* HelloWordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A3277B16BD55D100FC3B3F /* HelloWordTests.m */; };
+		85A3278A16BD58F800FC3B3F /* WordPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A3278916BD58F800FC3B3F /* WordPlayViewController.m */; };
+		85A3278D16BD5FF900FC3B3F /* WordShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A3278C16BD5FF900FC3B3F /* WordShowViewController.m */; };
+		85A3279F16BD621F00FC3B3F /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 85A3279E16BD621F00FC3B3F /* libsqlite3.0.dylib */; };
+		85A327B316BD701900FC3B3F /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A327AA16BD701900FC3B3F /* FMDatabase.m */; };
+		85A327B416BD701900FC3B3F /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A327AA16BD701900FC3B3F /* FMDatabase.m */; };
+		85A327B516BD701900FC3B3F /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A327AC16BD701900FC3B3F /* FMDatabaseAdditions.m */; };
+		85A327B616BD701900FC3B3F /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A327AC16BD701900FC3B3F /* FMDatabaseAdditions.m */; };
+		85A327B716BD701900FC3B3F /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A327AE16BD701900FC3B3F /* FMDatabasePool.m */; };
+		85A327B816BD701900FC3B3F /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A327AE16BD701900FC3B3F /* FMDatabasePool.m */; };
+		85A327B916BD701900FC3B3F /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A327B016BD701900FC3B3F /* FMDatabaseQueue.m */; };
+		85A327BA16BD701900FC3B3F /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A327B016BD701900FC3B3F /* FMDatabaseQueue.m */; };
+		85A327BB16BD701900FC3B3F /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A327B216BD701900FC3B3F /* FMResultSet.m */; };
+		85A327BC16BD701900FC3B3F /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A327B216BD701900FC3B3F /* FMResultSet.m */; };
+		85B242F916CBF0B8007C0553 /* ConfigListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B242F816CBF0B8007C0553 /* ConfigListViewController.m */; };
+		85B2430016CC01FB007C0553 /* WordIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B242FF16CC01FA007C0553 /* WordIndexViewController.m */; };
+		85B2430A16CD434F007C0553 /* TabScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2430916CD434F007C0553 /* TabScrollView.m */; };
+		85B2431116D47089007C0553 /* AccountConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2431016D47089007C0553 /* AccountConfigViewController.m */; };
+		85B2431716D617B6007C0553 /* ConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2431616D617B6007C0553 /* ConfigModel.m */; };
+		85B2431A16D61AA1007C0553 /* Db.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2431916D61AA1007C0553 /* Db.m */; };
+		85B2433216D667F5007C0553 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2431F16D667F5007C0553 /* SBJsonParser.m */; };
+		85B2433316D667F5007C0553 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2432116D667F5007C0553 /* SBJsonStreamParser.m */; };
+		85B2433416D667F5007C0553 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2432316D667F5007C0553 /* SBJsonStreamParserAccumulator.m */; };
+		85B2433516D667F5007C0553 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2432516D667F5007C0553 /* SBJsonStreamParserAdapter.m */; };
+		85B2433616D667F5007C0553 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2432716D667F5007C0553 /* SBJsonStreamParserState.m */; };
+		85B2433716D667F5007C0553 /* SBJsonStreamTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2432916D667F5007C0553 /* SBJsonStreamTokeniser.m */; };
+		85B2433816D667F5007C0553 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2432B16D667F5007C0553 /* SBJsonStreamWriter.m */; };
+		85B2433916D667F5007C0553 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2432D16D667F5007C0553 /* SBJsonStreamWriterAccumulator.m */; };
+		85B2433A16D667F5007C0553 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2432F16D667F5007C0553 /* SBJsonStreamWriterState.m */; };
+		85B2433B16D667F5007C0553 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2433116D667F5007C0553 /* SBJsonWriter.m */; };
+		85B2433E16D667FD007C0553 /* AppledocSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85B2433D16D667FD007C0553 /* AppledocSettings.plist */; };
+		85B2434216D66804007C0553 /* RegenerateApiDocumentation in Resources */ = {isa = PBXBuildFile; fileRef = 85B2434016D66804007C0553 /* RegenerateApiDocumentation */; };
+		85B2434316D66804007C0553 /* RegenerateCredits in Resources */ = {isa = PBXBuildFile; fileRef = 85B2434116D66804007C0553 /* RegenerateCredits */; };
+		85B2434616D6898D007C0553 /* BookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2434516D6898C007C0553 /* BookModel.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		85A3277216BD55D100FC3B3F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85A3273A16BD55D100FC3B3F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 85A3274216BD55D100FC3B3F;
+			remoteInfo = HelloWord;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		85213C6116BE95760007D484 /* WordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordModel.h; sourceTree = "<group>"; };
+		85213C6216BE95760007D484 /* WordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordModel.m; sourceTree = "<group>"; };
+		85213C6716BEA6370007D484 /* Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Validation.h; sourceTree = "<group>"; };
+		85213C6816BEA6370007D484 /* Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Validation.m; sourceTree = "<group>"; };
+		85213C7216C287CA0007D484 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
+		85213C7316C287CA0007D484 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		85213C7416C287CA0007D484 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		85213C7516C287CB0007D484 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		85213C7E16C2B37D0007D484 /* WordEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordEditViewController.h; sourceTree = "<group>"; };
+		85213C7F16C2B37D0007D484 /* WordEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordEditViewController.m; sourceTree = "<group>"; };
+		85299C5416C386A0000B5DBE /* WordTicketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordTicketViewController.h; sourceTree = "<group>"; };
+		85299C5516C386A0000B5DBE /* WordTicketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordTicketViewController.m; sourceTree = "<group>"; };
+		85299CAB16C3FDD8000B5DBE /* TextFieldFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldFactory.h; sourceTree = "<group>"; };
+		85299CAC16C3FDD8000B5DBE /* TextFieldFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldFactory.m; sourceTree = "<group>"; };
+		85A3274316BD55D100FC3B3F /* HelloWord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWord.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		85A3274716BD55D100FC3B3F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		85A3274916BD55D100FC3B3F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		85A3274B16BD55D100FC3B3F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		85A3274F16BD55D100FC3B3F /* HelloWord-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HelloWord-Info.plist"; sourceTree = "<group>"; };
+		85A3275116BD55D100FC3B3F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		85A3275316BD55D100FC3B3F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		85A3275516BD55D100FC3B3F /* HelloWord-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloWord-Prefix.pch"; sourceTree = "<group>"; };
+		85A3275616BD55D100FC3B3F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		85A3275716BD55D100FC3B3F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		85A3275916BD55D100FC3B3F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		85A3275B16BD55D100FC3B3F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		85A3275D16BD55D100FC3B3F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		85A3275F16BD55D100FC3B3F /* WordAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WordAddViewController.h; sourceTree = "<group>"; };
+		85A3276016BD55D100FC3B3F /* WordAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WordAddViewController.m; sourceTree = "<group>"; };
+		85A3276316BD55D100FC3B3F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
+		85A3276616BD55D100FC3B3F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		85A3276D16BD55D100FC3B3F /* HelloWordTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloWordTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		85A3276E16BD55D100FC3B3F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		85A3277616BD55D100FC3B3F /* HelloWordTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HelloWordTests-Info.plist"; sourceTree = "<group>"; };
+		85A3277816BD55D100FC3B3F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		85A3277A16BD55D100FC3B3F /* HelloWordTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWordTests.h; sourceTree = "<group>"; };
+		85A3277B16BD55D100FC3B3F /* HelloWordTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWordTests.m; sourceTree = "<group>"; };
+		85A3278816BD58F800FC3B3F /* WordPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordPlayViewController.h; sourceTree = "<group>"; };
+		85A3278916BD58F800FC3B3F /* WordPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordPlayViewController.m; sourceTree = "<group>"; };
+		85A3278B16BD5FF900FC3B3F /* WordShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordShowViewController.h; sourceTree = "<group>"; };
+		85A3278C16BD5FF900FC3B3F /* WordShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordShowViewController.m; sourceTree = "<group>"; };
+		85A3279E16BD621F00FC3B3F /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		85A327A916BD701900FC3B3F /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		85A327AA16BD701900FC3B3F /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		85A327AB16BD701900FC3B3F /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		85A327AC16BD701900FC3B3F /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		85A327AD16BD701900FC3B3F /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		85A327AE16BD701900FC3B3F /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		85A327AF16BD701900FC3B3F /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		85A327B016BD701900FC3B3F /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		85A327B116BD701900FC3B3F /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		85A327B216BD701900FC3B3F /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		85B242F716CBF0B8007C0553 /* ConfigListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigListViewController.h; sourceTree = "<group>"; };
+		85B242F816CBF0B8007C0553 /* ConfigListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigListViewController.m; sourceTree = "<group>"; };
+		85B242FE16CC01FA007C0553 /* WordIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordIndexViewController.h; sourceTree = "<group>"; };
+		85B242FF16CC01FA007C0553 /* WordIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordIndexViewController.m; sourceTree = "<group>"; };
+		85B2430816CD434F007C0553 /* TabScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabScrollView.h; sourceTree = "<group>"; };
+		85B2430916CD434F007C0553 /* TabScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabScrollView.m; sourceTree = "<group>"; };
+		85B2430C16D20004007C0553 /* hello_word.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = hello_word.db; sourceTree = "<group>"; };
+		85B2430F16D47089007C0553 /* AccountConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountConfigViewController.h; sourceTree = "<group>"; };
+		85B2431016D47089007C0553 /* AccountConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountConfigViewController.m; sourceTree = "<group>"; };
+		85B2431516D617B5007C0553 /* ConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigModel.h; sourceTree = "<group>"; };
+		85B2431616D617B6007C0553 /* ConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigModel.m; sourceTree = "<group>"; };
+		85B2431816D61AA1007C0553 /* Db.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Db.h; sourceTree = "<group>"; };
+		85B2431916D61AA1007C0553 /* Db.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Db.m; sourceTree = "<group>"; };
+		85B2431D16D667F5007C0553 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
+		85B2431E16D667F5007C0553 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		85B2431F16D667F5007C0553 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		85B2432016D667F5007C0553 /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
+		85B2432116D667F5007C0553 /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
+		85B2432216D667F5007C0553 /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
+		85B2432316D667F5007C0553 /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
+		85B2432416D667F5007C0553 /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		85B2432516D667F5007C0553 /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		85B2432616D667F5007C0553 /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		85B2432716D667F5007C0553 /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		85B2432816D667F5007C0553 /* SBJsonStreamTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamTokeniser.h; sourceTree = "<group>"; };
+		85B2432916D667F5007C0553 /* SBJsonStreamTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamTokeniser.m; sourceTree = "<group>"; };
+		85B2432A16D667F5007C0553 /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
+		85B2432B16D667F5007C0553 /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
+		85B2432C16D667F5007C0553 /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
+		85B2432D16D667F5007C0553 /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
+		85B2432E16D667F5007C0553 /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
+		85B2432F16D667F5007C0553 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
+		85B2433016D667F5007C0553 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		85B2433116D667F5007C0553 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		85B2433D16D667FD007C0553 /* AppledocSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppledocSettings.plist; sourceTree = "<group>"; };
+		85B2434016D66804007C0553 /* RegenerateApiDocumentation */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = RegenerateApiDocumentation; sourceTree = "<group>"; };
+		85B2434116D66804007C0553 /* RegenerateCredits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = RegenerateCredits; sourceTree = "<group>"; };
+		85B2434416D6898C007C0553 /* BookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookModel.h; sourceTree = "<group>"; };
+		85B2434516D6898C007C0553 /* BookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookModel.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		85A3274016BD55D100FC3B3F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85A3279F16BD621F00FC3B3F /* libsqlite3.0.dylib in Frameworks */,
+				85A3274816BD55D100FC3B3F /* UIKit.framework in Frameworks */,
+				85A3274A16BD55D100FC3B3F /* Foundation.framework in Frameworks */,
+				85A3274C16BD55D100FC3B3F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85A3276916BD55D100FC3B3F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85A3276F16BD55D100FC3B3F /* SenTestingKit.framework in Frameworks */,
+				85A3277016BD55D100FC3B3F /* UIKit.framework in Frameworks */,
+				85A3277116BD55D100FC3B3F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		85213C8216C2C3910007D484 /* word */ = {
+			isa = PBXGroup;
+			children = (
+				85A3275F16BD55D100FC3B3F /* WordAddViewController.h */,
+				85A3276016BD55D100FC3B3F /* WordAddViewController.m */,
+				85A3278B16BD5FF900FC3B3F /* WordShowViewController.h */,
+				85A3278C16BD5FF900FC3B3F /* WordShowViewController.m */,
+				85A3278816BD58F800FC3B3F /* WordPlayViewController.h */,
+				85A3278916BD58F800FC3B3F /* WordPlayViewController.m */,
+				85213C7E16C2B37D0007D484 /* WordEditViewController.h */,
+				85213C7F16C2B37D0007D484 /* WordEditViewController.m */,
+				85299C5416C386A0000B5DBE /* WordTicketViewController.h */,
+				85299C5516C386A0000B5DBE /* WordTicketViewController.m */,
+				85B242FE16CC01FA007C0553 /* WordIndexViewController.h */,
+				85B242FF16CC01FA007C0553 /* WordIndexViewController.m */,
+				85B2430816CD434F007C0553 /* TabScrollView.h */,
+				85B2430916CD434F007C0553 /* TabScrollView.m */,
+			);
+			name = word;
+			sourceTree = "<group>";
+		};
+		85A3273816BD55D100FC3B3F = {
+			isa = PBXGroup;
+			children = (
+				85A3279E16BD621F00FC3B3F /* libsqlite3.0.dylib */,
+				85A3274D16BD55D100FC3B3F /* HelloWord */,
+				85A3277416BD55D100FC3B3F /* HelloWordTests */,
+				85A3274616BD55D100FC3B3F /* Frameworks */,
+				85A3274416BD55D100FC3B3F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		85A3274416BD55D100FC3B3F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				85A3274316BD55D100FC3B3F /* HelloWord.app */,
+				85A3276D16BD55D100FC3B3F /* HelloWordTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		85A3274616BD55D100FC3B3F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				85A3274716BD55D100FC3B3F /* UIKit.framework */,
+				85A3274916BD55D100FC3B3F /* Foundation.framework */,
+				85A3274B16BD55D100FC3B3F /* CoreGraphics.framework */,
+				85A3276E16BD55D100FC3B3F /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		85A3274D16BD55D100FC3B3F /* HelloWord */ = {
+			isa = PBXGroup;
+			children = (
+				85B2430B16D1FFDA007C0553 /* resources */,
+				85B242FD16CC01A4007C0553 /* config */,
+				85213C8216C2C3910007D484 /* word */,
+				85A3275616BD55D100FC3B3F /* AppDelegate.h */,
+				85A3275716BD55D100FC3B3F /* AppDelegate.m */,
+				85A3276216BD55D100FC3B3F /* ViewController_iPhone.xib */,
+				85A3276516BD55D100FC3B3F /* ViewController_iPad.xib */,
+				85A3274E16BD55D100FC3B3F /* Supporting Files */,
+			);
+			path = HelloWord;
+			sourceTree = "<group>";
+		};
+		85A3274E16BD55D100FC3B3F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				85B2434716D6899B007C0553 /* model */,
+				85B2431B16D667D6007C0553 /* SBJson */,
+				85299CAB16C3FDD8000B5DBE /* TextFieldFactory.h */,
+				85299CAC16C3FDD8000B5DBE /* TextFieldFactory.m */,
+				85A327A816BD6FEF00FC3B3F /* FMDB */,
+				85A3274F16BD55D100FC3B3F /* HelloWord-Info.plist */,
+				85A3275016BD55D100FC3B3F /* InfoPlist.strings */,
+				85A3275316BD55D100FC3B3F /* main.m */,
+				85A3275516BD55D100FC3B3F /* HelloWord-Prefix.pch */,
+				85A3275916BD55D100FC3B3F /* Default.png */,
+				85A3275B16BD55D100FC3B3F /* Default@2x.png */,
+				85A3275D16BD55D100FC3B3F /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		85A3277416BD55D100FC3B3F /* HelloWordTests */ = {
+			isa = PBXGroup;
+			children = (
+				85A3277A16BD55D100FC3B3F /* HelloWordTests.h */,
+				85A3277B16BD55D100FC3B3F /* HelloWordTests.m */,
+				85A3277516BD55D100FC3B3F /* Supporting Files */,
+			);
+			path = HelloWordTests;
+			sourceTree = "<group>";
+		};
+		85A3277516BD55D100FC3B3F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				85A3277616BD55D100FC3B3F /* HelloWordTests-Info.plist */,
+				85A3277716BD55D100FC3B3F /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		85A327A816BD6FEF00FC3B3F /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				85A327A916BD701900FC3B3F /* FMDatabase.h */,
+				85A327AA16BD701900FC3B3F /* FMDatabase.m */,
+				85A327AB16BD701900FC3B3F /* FMDatabaseAdditions.h */,
+				85A327AC16BD701900FC3B3F /* FMDatabaseAdditions.m */,
+				85A327AD16BD701900FC3B3F /* FMDatabasePool.h */,
+				85A327AE16BD701900FC3B3F /* FMDatabasePool.m */,
+				85A327AF16BD701900FC3B3F /* FMDatabaseQueue.h */,
+				85A327B016BD701900FC3B3F /* FMDatabaseQueue.m */,
+				85A327B116BD701900FC3B3F /* FMResultSet.h */,
+				85A327B216BD701900FC3B3F /* FMResultSet.m */,
+			);
+			name = FMDB;
+			sourceTree = "<group>";
+		};
+		85B242FD16CC01A4007C0553 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				85B242F716CBF0B8007C0553 /* ConfigListViewController.h */,
+				85B242F816CBF0B8007C0553 /* ConfigListViewController.m */,
+				85B2430F16D47089007C0553 /* AccountConfigViewController.h */,
+				85B2431016D47089007C0553 /* AccountConfigViewController.m */,
+			);
+			name = config;
+			sourceTree = "<group>";
+		};
+		85B2430B16D1FFDA007C0553 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				85B2430C16D20004007C0553 /* hello_word.db */,
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
+		85B2431B16D667D6007C0553 /* SBJson */ = {
+			isa = PBXGroup;
+			children = (
+				85B2433F16D66804007C0553 /* scripts */,
+				85B2433C16D667FD007C0553 /* resources */,
+				85B2431C16D667F5007C0553 /* objc */,
+			);
+			name = SBJson;
+			sourceTree = "<group>";
+		};
+		85B2431C16D667F5007C0553 /* objc */ = {
+			isa = PBXGroup;
+			children = (
+				85B2431D16D667F5007C0553 /* SBJson.h */,
+				85B2431E16D667F5007C0553 /* SBJsonParser.h */,
+				85B2431F16D667F5007C0553 /* SBJsonParser.m */,
+				85B2432016D667F5007C0553 /* SBJsonStreamParser.h */,
+				85B2432116D667F5007C0553 /* SBJsonStreamParser.m */,
+				85B2432216D667F5007C0553 /* SBJsonStreamParserAccumulator.h */,
+				85B2432316D667F5007C0553 /* SBJsonStreamParserAccumulator.m */,
+				85B2432416D667F5007C0553 /* SBJsonStreamParserAdapter.h */,
+				85B2432516D667F5007C0553 /* SBJsonStreamParserAdapter.m */,
+				85B2432616D667F5007C0553 /* SBJsonStreamParserState.h */,
+				85B2432716D667F5007C0553 /* SBJsonStreamParserState.m */,
+				85B2432816D667F5007C0553 /* SBJsonStreamTokeniser.h */,
+				85B2432916D667F5007C0553 /* SBJsonStreamTokeniser.m */,
+				85B2432A16D667F5007C0553 /* SBJsonStreamWriter.h */,
+				85B2432B16D667F5007C0553 /* SBJsonStreamWriter.m */,
+				85B2432C16D667F5007C0553 /* SBJsonStreamWriterAccumulator.h */,
+				85B2432D16D667F5007C0553 /* SBJsonStreamWriterAccumulator.m */,
+				85B2432E16D667F5007C0553 /* SBJsonStreamWriterState.h */,
+				85B2432F16D667F5007C0553 /* SBJsonStreamWriterState.m */,
+				85B2433016D667F5007C0553 /* SBJsonWriter.h */,
+				85B2433116D667F5007C0553 /* SBJsonWriter.m */,
+			);
+			path = objc;
+			sourceTree = "<group>";
+		};
+		85B2433C16D667FD007C0553 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				85B2433D16D667FD007C0553 /* AppledocSettings.plist */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		85B2433F16D66804007C0553 /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				85B2434016D66804007C0553 /* RegenerateApiDocumentation */,
+				85B2434116D66804007C0553 /* RegenerateCredits */,
+			);
+			path = scripts;
+			sourceTree = "<group>";
+		};
+		85B2434716D6899B007C0553 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				85B2431816D61AA1007C0553 /* Db.h */,
+				85B2431916D61AA1007C0553 /* Db.m */,
+				85213C6716BEA6370007D484 /* Validation.h */,
+				85213C6816BEA6370007D484 /* Validation.m */,
+				85213C6116BE95760007D484 /* WordModel.h */,
+				85213C6216BE95760007D484 /* WordModel.m */,
+				85B2431516D617B5007C0553 /* ConfigModel.h */,
+				85B2431616D617B6007C0553 /* ConfigModel.m */,
+				85B2434416D6898C007C0553 /* BookModel.h */,
+				85B2434516D6898C007C0553 /* BookModel.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		85A3274216BD55D100FC3B3F /* HelloWord */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 85A3277F16BD55D100FC3B3F /* Build configuration list for PBXNativeTarget "HelloWord" */;
+			buildPhases = (
+				85A3273F16BD55D100FC3B3F /* Sources */,
+				85A3274016BD55D100FC3B3F /* Frameworks */,
+				85A3274116BD55D100FC3B3F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HelloWord;
+			productName = HelloWord;
+			productReference = 85A3274316BD55D100FC3B3F /* HelloWord.app */;
+			productType = "com.apple.product-type.application";
+		};
+		85A3276C16BD55D100FC3B3F /* HelloWordTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 85A3278216BD55D100FC3B3F /* Build configuration list for PBXNativeTarget "HelloWordTests" */;
+			buildPhases = (
+				85A3276816BD55D100FC3B3F /* Sources */,
+				85A3276916BD55D100FC3B3F /* Frameworks */,
+				85A3276A16BD55D100FC3B3F /* Resources */,
+				85A3276B16BD55D100FC3B3F /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				85A3277316BD55D100FC3B3F /* PBXTargetDependency */,
+			);
+			name = HelloWordTests;
+			productName = HelloWordTests;
+			productReference = 85A3276D16BD55D100FC3B3F /* HelloWordTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		85A3273A16BD55D100FC3B3F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "横濱 悠平";
+			};
+			buildConfigurationList = 85A3273D16BD55D100FC3B3F /* Build configuration list for PBXProject "HelloWord" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				ja,
+			);
+			mainGroup = 85A3273816BD55D100FC3B3F;
+			productRefGroup = 85A3274416BD55D100FC3B3F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				85A3274216BD55D100FC3B3F /* HelloWord */,
+				85A3276C16BD55D100FC3B3F /* HelloWordTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		85A3274116BD55D100FC3B3F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85A3275216BD55D100FC3B3F /* InfoPlist.strings in Resources */,
+				85A3275A16BD55D100FC3B3F /* Default.png in Resources */,
+				85A3275C16BD55D100FC3B3F /* Default@2x.png in Resources */,
+				85A3275E16BD55D100FC3B3F /* Default-568h@2x.png in Resources */,
+				85A3276416BD55D100FC3B3F /* ViewController_iPhone.xib in Resources */,
+				85A3276716BD55D100FC3B3F /* ViewController_iPad.xib in Resources */,
+				85B2433E16D667FD007C0553 /* AppledocSettings.plist in Resources */,
+				85B2434216D66804007C0553 /* RegenerateApiDocumentation in Resources */,
+				85B2434316D66804007C0553 /* RegenerateCredits in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85A3276A16BD55D100FC3B3F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85A3277916BD55D100FC3B3F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		85A3276B16BD55D100FC3B3F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		85A3273F16BD55D100FC3B3F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85A3275416BD55D100FC3B3F /* main.m in Sources */,
+				85A3275816BD55D100FC3B3F /* AppDelegate.m in Sources */,
+				85A3276116BD55D100FC3B3F /* WordAddViewController.m in Sources */,
+				85A3278A16BD58F800FC3B3F /* WordPlayViewController.m in Sources */,
+				85A3278D16BD5FF900FC3B3F /* WordShowViewController.m in Sources */,
+				85A327B316BD701900FC3B3F /* FMDatabase.m in Sources */,
+				85A327B516BD701900FC3B3F /* FMDatabaseAdditions.m in Sources */,
+				85A327B716BD701900FC3B3F /* FMDatabasePool.m in Sources */,
+				85A327B916BD701900FC3B3F /* FMDatabaseQueue.m in Sources */,
+				85A327BB16BD701900FC3B3F /* FMResultSet.m in Sources */,
+				85213C6316BE95760007D484 /* WordModel.m in Sources */,
+				85213C6916BEA6370007D484 /* Validation.m in Sources */,
+				85213C8016C2B37D0007D484 /* WordEditViewController.m in Sources */,
+				85299C5616C386A0000B5DBE /* WordTicketViewController.m in Sources */,
+				85299CAD16C3FDD8000B5DBE /* TextFieldFactory.m in Sources */,
+				85B242F916CBF0B8007C0553 /* ConfigListViewController.m in Sources */,
+				85B2430016CC01FB007C0553 /* WordIndexViewController.m in Sources */,
+				85B2430A16CD434F007C0553 /* TabScrollView.m in Sources */,
+				85B2431116D47089007C0553 /* AccountConfigViewController.m in Sources */,
+				85B2431716D617B6007C0553 /* ConfigModel.m in Sources */,
+				85B2431A16D61AA1007C0553 /* Db.m in Sources */,
+				85B2433216D667F5007C0553 /* SBJsonParser.m in Sources */,
+				85B2433316D667F5007C0553 /* SBJsonStreamParser.m in Sources */,
+				85B2433416D667F5007C0553 /* SBJsonStreamParserAccumulator.m in Sources */,
+				85B2433516D667F5007C0553 /* SBJsonStreamParserAdapter.m in Sources */,
+				85B2433616D667F5007C0553 /* SBJsonStreamParserState.m in Sources */,
+				85B2433716D667F5007C0553 /* SBJsonStreamTokeniser.m in Sources */,
+				85B2433816D667F5007C0553 /* SBJsonStreamWriter.m in Sources */,
+				85B2433916D667F5007C0553 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				85B2433A16D667F5007C0553 /* SBJsonStreamWriterState.m in Sources */,
+				85B2433B16D667F5007C0553 /* SBJsonWriter.m in Sources */,
+				85B2434616D6898D007C0553 /* BookModel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85A3276816BD55D100FC3B3F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85A3277C16BD55D100FC3B3F /* HelloWordTests.m in Sources */,
+				85A327B416BD701900FC3B3F /* FMDatabase.m in Sources */,
+				85A327B616BD701900FC3B3F /* FMDatabaseAdditions.m in Sources */,
+				85A327B816BD701900FC3B3F /* FMDatabasePool.m in Sources */,
+				85A327BA16BD701900FC3B3F /* FMDatabaseQueue.m in Sources */,
+				85A327BC16BD701900FC3B3F /* FMResultSet.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		85A3277316BD55D100FC3B3F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 85A3274216BD55D100FC3B3F /* HelloWord */;
+			targetProxy = 85A3277216BD55D100FC3B3F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		85A3275016BD55D100FC3B3F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				85A3275116BD55D100FC3B3F /* en */,
+				85213C7416C287CA0007D484 /* ja */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		85A3276216BD55D100FC3B3F /* ViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				85A3276316BD55D100FC3B3F /* en */,
+				85213C7216C287CA0007D484 /* ja */,
+			);
+			name = ViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		85A3276516BD55D100FC3B3F /* ViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				85A3276616BD55D100FC3B3F /* en */,
+				85213C7316C287CA0007D484 /* ja */,
+			);
+			name = ViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		85A3277716BD55D100FC3B3F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				85A3277816BD55D100FC3B3F /* en */,
+				85213C7516C287CB0007D484 /* ja */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		85A3277D16BD55D100FC3B3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: ほげ 横浜 (JC87D7PN8M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos6.0]" = "iPhone Developer: ほげ 横浜 (JC87D7PN8M)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PROVISIONING_PROFILE = "FF80C59C-5DB4-4B29-B5B4-1DEFE6E24E70";
+				"PROVISIONING_PROFILE[sdk=iphoneos6.0]" = "FF80C59C-5DB4-4B29-B5B4-1DEFE6E24E70";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Debug;
+		};
+		85A3277E16BD55D100FC3B3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: ほげ 横浜 (JC87D7PN8M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos6.0]" = "iPhone Developer: ほげ 横浜 (JC87D7PN8M)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "FF80C59C-5DB4-4B29-B5B4-1DEFE6E24E70";
+				"PROVISIONING_PROFILE[sdk=iphoneos6.0]" = "FF80C59C-5DB4-4B29-B5B4-1DEFE6E24E70";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		85A3278016BD55D100FC3B3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloWord/HelloWord-Prefix.pch";
+				INFOPLIST_FILE = "HelloWord/HelloWord-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		85A3278116BD55D100FC3B3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloWord/HelloWord-Prefix.pch";
+				INFOPLIST_FILE = "HelloWord/HelloWord-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		85A3278316BD55D100FC3B3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HelloWord.app/HelloWord";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloWord/HelloWord-Prefix.pch";
+				INFOPLIST_FILE = "HelloWordTests/HelloWordTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		85A3278416BD55D100FC3B3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HelloWord.app/HelloWord";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloWord/HelloWord-Prefix.pch";
+				INFOPLIST_FILE = "HelloWordTests/HelloWordTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		85A3273D16BD55D100FC3B3F /* Build configuration list for PBXProject "HelloWord" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85A3277D16BD55D100FC3B3F /* Debug */,
+				85A3277E16BD55D100FC3B3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		85A3277F16BD55D100FC3B3F /* Build configuration list for PBXNativeTarget "HelloWord" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85A3278016BD55D100FC3B3F /* Debug */,
+				85A3278116BD55D100FC3B3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		85A3278216BD55D100FC3B3F /* Build configuration list for PBXNativeTarget "HelloWordTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85A3278316BD55D100FC3B3F /* Debug */,
+				85A3278416BD55D100FC3B3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 85A3273A16BD55D100FC3B3F /* Project object */;
+}
