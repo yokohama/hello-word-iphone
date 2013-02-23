@@ -57,7 +57,7 @@
 }
 
 -(int)create{
-    NSString *sql = [[NSString alloc] initWithFormat:@"INSERT INTO books VALUES(NULL, '%@');", title];
+    NSString *sql = [[NSString alloc] initWithFormat:@"INSERT INTO books ('id', 'title') VALUES(NULL, '%@');", title];
     [db open];
     [db executeUpdate:sql];
     int createRowId = [db lastInsertRowId];

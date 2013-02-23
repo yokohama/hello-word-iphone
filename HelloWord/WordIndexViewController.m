@@ -24,7 +24,7 @@
 
 @implementation WordIndexViewController
 
-@synthesize records, index;
+@synthesize records, index, bookId;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,6 +46,7 @@
 
     tabBar = [[TabScrollView alloc] initWithFrame:CGRectMake(0, 0, w, 35)];
     tabBar.tag = @"tabBar";
+    //tabBar.parentController = self;
     [self.view addSubview:tabBar];
     
     index = [[UITableView alloc] initWithFrame:CGRectMake(0, tabBar.frame.size.height, w, (self.view.frame.size.height - tabBar.frame.size.height))];
@@ -103,6 +104,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    
     WordModel *wm = [[WordModel alloc] init];
     records = [wm findByBookId:bookId];
     
