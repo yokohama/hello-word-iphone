@@ -31,6 +31,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
 
     CGRect r = [[UIScreen mainScreen] bounds];
     CGFloat w = r.size.width;
