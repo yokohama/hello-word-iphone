@@ -7,20 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TabScrollView.h"
+//#import "TabScrollView.h"
 
 @interface WordIndexViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
     NSMutableArray *records;
     BOOL isDragging;
     UITableView *index;
     UILabel *count;
-    TabScrollView *tabBar;
+    UIScrollView *tabBar;
     int bookId;
+    UILabel *selectedBookLabel;
 }
 
 @property(nonatomic, strong, readwrite) NSMutableArray *records;
 @property(nonatomic, strong, readwrite) UITableView *index;
 @property(readwrite) int bookId;
-
 
 @end

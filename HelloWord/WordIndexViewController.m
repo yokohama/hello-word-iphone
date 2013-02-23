@@ -12,14 +12,15 @@
 #import "WordPlayViewController.h"
 #import "WordAddViewController.h"
 #import "WordShowViewController.h"
-#import "TabScrollView.h"
 #import "ConfigModel.h"
 #import "SBJson.h"
 #import "BookModel.h"
 
 
 #define REFRESH_VIEW_HEIGHT 200
-#define MARGIN_WIDTH 10
+#define HEADER_MARGIN_WIDTH 10
+#define TAB_WIDTH_SIZE 80
+#define TAB_SPACER_SIZE 2
 
 
 @implementation WordIndexViewController
@@ -39,14 +40,16 @@
 {
     [super viewDidLoad];
     
-    bookId = 1;
-	
+    //初回bookIdがセットされていない時はライブラリの1をセット
+    if (bookId == 0) {
+        bookId = 1;
+    }
+    
     CGRect r = [[UIScreen mainScreen] bounds];
     CGFloat w = r.size.width;
 
-    tabBar = [[TabScrollView alloc] initWithFrame:CGRectMake(0, 0, w, 35)];
-    tabBar.tag = @"tabBar";
-    //tabBar.parentController = self;
+    tabBar = [self makeTabBarWithFrame:CGRectMake(0, 0, w, 35)];
+    //tabBar.tag = @"tabBar";
     [self.view addSubview:tabBar];
     
     index = [[UITableView alloc] initWithFrame:CGRectMake(0, tabBar.frame.size.height, w, (self.view.frame.size.height - tabBar.frame.size.height))];
@@ -54,7 +57,7 @@
     index.dataSource = self;
     
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, w, 30)];
-    count = [[UILabel alloc] initWithFrame:CGRectMake(MARGIN_WIDTH, 0, header.frame.size.width-(MARGIN_WIDTH*2), 30)];
+    count = [[UILabel alloc] initWithFrame:CGRectMake(HEADER_MARGIN_WIDTH, 0, header.frame.size.width-(HEADER_MARGIN_WIDTH*2), 30)];
     count.textAlignment = NSTextAlignmentCenter;
     [header addSubview:count];
     index.tableHeaderView = header;
@@ -116,6 +119,63 @@
     [self.navigationController setToolbarHidden:NO];
 }
 
+-(UIScrollView *)makeTabBarWithFrame:(CGRect)rect{
+    UIScrollView *sv = [[UIScrollView alloc] initWithFrame:rect];
+    //sv.backgroundColor = [UIColor whiteColor];
+    
+    NSMutableArray *books = [[[BookModel alloc]init] findAll];
+    int scrollAreaWidth = rect.size.width;
+    int tabBarWidthSize = 0;
+    if ([books count] != 0) {
+        for (int i=0; i<[books count]; i++) {
+            tabBarWidthSize += (TAB_WIDTH_SIZE + TAB_SPACER_SIZE);
+        }
+        scrollAreaWidth = tabBarWidthSize;
+    }
+    
+    UIView *scrollArea = nil;
+    if ([books count] == 0) {
+        scrollArea = [[UIView alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, rect.size.height)];
+        UILabel *noBook = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, rect.size.width, rect.size.height)];
+        noBook.text = @"下にスクロールしてデータを同期";
+        noBook.backgroundColor = [UIColor whiteColor];
+        noBook.font = [UIFont fontWithName:@"AppleGothic" size:10];
+        noBook.textAlignment = NSTextAlignmentCenter;
+        [scrollArea addSubview:noBook];
+    } else {
+        scrollArea = [[UIView alloc] initWithFrame:CGRectMake(0, 0, scrollAreaWidth-2, rect.size.height)];
+        for (int i=0; i<[books count]; i++) {
+            NSString *labelText = [[NSString alloc] initWithFormat:@" %@", [books[i] title]];
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake((TAB_WIDTH_SIZE*i)+(TAB_SPACER_SIZE*i), 0, TAB_WIDTH_SIZE, 35)];
+            label.text = labelText;
+            label.layer.cornerRadius = 5;
+            label.layer.shadowOpacity = 0.2;
+            label.layer.shadowOffset = CGSizeMake(2.0, 4.0);
+            label.userInteractionEnabled = YES;
+            label.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+            label.tag = [books[i] recodeId];
+            label.userInteractionEnabled = YES;
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tabBookTitle:)];
+            [label addGestureRecognizer:tap];
+            [scrollArea addSubview:label];
+            if (selectedBookLabel == nil) {
+                label.backgroundColor = [UIColor redColor];
+                selectedBookLabel = label;
+            }
+        }
+    }
+    [sv addSubview:scrollArea];
+    sv.contentSize = scrollArea.bounds.size;
+    sv.showsHorizontalScrollIndicator = NO;
+    sv.tag = @"tabBar";
+    
+    UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, scrollAreaWidth, 5)];
+    [line setBackgroundColor:[UIColor redColor]];
+    [sv addSubview:line];
+    
+    return sv;
+}
+
 - (void)add{
     UIViewController *avc = [[WordAddViewController alloc] initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:avc animated:YES];
@@ -157,7 +217,7 @@
         } else {
             UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle:@"Error"
-                                  message:@"サーバーから単語帳を取得するには、最初に設定から認証をおこなってください。"
+                                  message:@"サーバーから単語帳を取得するには、設定から認証をおこなってください。"
                                   delegate:self
                                   cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil];
@@ -234,11 +294,12 @@
     
     [[self.view viewWithTag:@"tabBar"] removeFromSuperview];
 
-    tabBar = [[TabScrollView alloc] initWithFrame:CGRectMake(0, 0, w, 35)];
-    tabBar.tag = @"tabBar";
+    tabBar = [self makeTabBarWithFrame:CGRectMake(0, 0, w, 35)];
     [self.view addSubview:tabBar];
-
     
+    WordModel *wm = [[WordModel alloc] init];
+    records = [wm findByBookId:bookId];
+    [index reloadData];
 }
 
 //通信完了時の処理
@@ -257,6 +318,18 @@
     [alert show];
 }
 
+- (void)tabBookTitle: (UITapGestureRecognizer *)sender{
+    UILabel *label = (UILabel *)sender.view;
+    bookId = label.tag;
+    WordModel *wm = [[WordModel alloc] init];
+    records = [wm findByBookId:bookId];
+    count.text = count.text = [NSString stringWithFormat:@"%d 件", [records count]];
+    [index reloadData];
+    
+    label.backgroundColor = [UIColor redColor];
+    selectedBookLabel.backgroundColor = [UIColor whiteColor];
+    selectedBookLabel = label;
+}
 
 @end
 
