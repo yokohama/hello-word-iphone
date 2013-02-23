@@ -248,9 +248,10 @@
 		85A3274D16BD55D100FC3B3F /* HelloWord */ = {
 			isa = PBXGroup;
 			children = (
+				85ED392016D8B22B00887029 /* view */,
+				85ED391F16D8B21600887029 /* controller */,
+				85ED391E16D8B1C700887029 /* model */,
 				85B2430B16D1FFDA007C0553 /* resources */,
-				85B242FD16CC01A4007C0553 /* config */,
-				85213C8216C2C3910007D484 /* word */,
 				85A3275616BD55D100FC3B3F /* AppDelegate.h */,
 				85A3275716BD55D100FC3B3F /* AppDelegate.m */,
 				85A3276216BD55D100FC3B3F /* ViewController_iPhone.xib */,
@@ -263,10 +264,7 @@
 		85A3274E16BD55D100FC3B3F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				85B2434716D6899B007C0553 /* model */,
 				85B2431B16D667D6007C0553 /* SBJson */,
-				85299CAB16C3FDD8000B5DBE /* TextFieldFactory.h */,
-				85299CAC16C3FDD8000B5DBE /* TextFieldFactory.m */,
 				85A327A816BD6FEF00FC3B3F /* FMDB */,
 				85A3274F16BD55D100FC3B3F /* HelloWord-Info.plist */,
 				85A3275016BD55D100FC3B3F /* InfoPlist.strings */,
@@ -389,7 +387,7 @@
 			path = scripts;
 			sourceTree = "<group>";
 		};
-		85B2434716D6899B007C0553 /* model */ = {
+		85ED391E16D8B1C700887029 /* model */ = {
 			isa = PBXGroup;
 			children = (
 				85B2431816D61AA1007C0553 /* Db.h */,
@@ -404,6 +402,24 @@
 				85B2434516D6898C007C0553 /* BookModel.m */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		85ED391F16D8B21600887029 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				85B242FD16CC01A4007C0553 /* config */,
+				85213C8216C2C3910007D484 /* word */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		85ED392016D8B22B00887029 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				85299CAC16C3FDD8000B5DBE /* TextFieldFactory.m */,
+				85299CAB16C3FDD8000B5DBE /* TextFieldFactory.h */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
