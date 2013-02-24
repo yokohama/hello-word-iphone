@@ -37,7 +37,8 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     int boardWidth = self.view.frame.size.width - 20;
-    int boardHeight = self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height - self.navigationController.toolbar.frame.size.height - 40;
+    //int boardHeight = self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height - self.navigationController.toolbar.frame.size.height - 40;
+    int boardHeight = self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height - 20;
     
     UIView *board = [[UIView alloc] initWithFrame:CGRectMake(10, 10, boardWidth, boardHeight)];
     board.backgroundColor = [UIColor whiteColor];
@@ -55,6 +56,13 @@
     UILabel *description = [[UILabel alloc] init];
     description.frame = CGRectMake(10, 70, boardWidth-20, 50);
     description.text = @" <意味>";
+    
+    //TODO:タブのラベルに影をつける練習をここでやっている
+    description.layer.shadowColor = [UIColor blackColor].CGColor;
+    description.layer.shadowOpacity = 0.2; // 濃さを指定
+    description.layer.shadowOffset = CGSizeMake(10.0, 10.0);
+    //TODO:ここまで
+    
     [board addSubview:description];
     
     CGRect rect = CGRectMake(10, 110, boardWidth-20, 200);
@@ -64,7 +72,7 @@
     [board addSubview:answer];
 
     
-    [self.navigationController setToolbarHidden:NO animated:YES];
+    [self.navigationController setToolbarHidden:YES animated:YES];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     self.navigationController.toolbar.tintColor = [UIColor blackColor];

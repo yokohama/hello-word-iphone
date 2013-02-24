@@ -26,7 +26,11 @@
 {
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    UIView *pageArea = [[UIView alloc] initWithFrame:CGRectMake(0, -20, self.view.frame.size.width, self.view.frame.size.height - 80)];
+    [self.view addSubview:pageArea];
+    
     
     //ページめくり
     pageIndex = 1;
@@ -40,6 +44,7 @@
     pageViewController.delegate = self;
     pageViewController.dataSource = self;
     pageViewController.view.frame = self.view.frame;
+    pageViewController.view.backgroundColor = [UIColor whiteColor];
     
     UIViewController *vc = [self setWordTicketViewController];
     
@@ -53,7 +58,19 @@
     [self.navigationController setNavigationBarHidden:NO];
     [self.navigationController setToolbarHidden:YES];
     
-    [self.view addSubview:pageViewController.view];
+    [pageArea addSubview:pageViewController.view];
+    
+    UIView *playBarArea = [[UIView alloc] initWithFrame:CGRectMake(0, 380, self.view.frame.size.width, 40)];
+    playBarArea.backgroundColor = [UIColor redColor];
+
+    [self.view addSubview:playBarArea];
+    
+    page = [[UILabel alloc] initWithFrame:CGRectMake(playBarArea.frame.size.width/2, 0, 80, 20)];
+    page.text = [[NSString alloc] initWithFormat:@"%d", pageIndex];
+    [playBarArea addSubview:page];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
 }
 
 - (WordTicketViewController *)setWordTicketViewController{
@@ -98,6 +115,7 @@
     if (completed) {
         WordTicketViewController *vc = [previousViewControllers objectAtIndex:0];
         vc.pageIndex = pageIndex;
+        page.text = [[NSString alloc] initWithFormat:@"%d", pageIndex];
     }
 }
 

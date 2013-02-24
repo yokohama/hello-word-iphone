@@ -15,6 +15,7 @@
     UIPageViewController *pageViewController;
     int pageIndex;
     int pageMax;
+    UILabel *page;
     
     NSArray *records;
 }

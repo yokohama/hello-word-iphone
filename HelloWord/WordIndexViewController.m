@@ -15,6 +15,7 @@
 #import "ConfigModel.h"
 #import "SBJson.h"
 #import "BookModel.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 #define REFRESH_VIEW_HEIGHT 200
@@ -85,7 +86,7 @@
                                initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                target:nil action:nil];
     
-    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add)];
+    //UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add)];
     
     UIBarButtonItem *play = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(play)];
     //TODO:設定(アカウント、再生秒、管理画面連携など)
@@ -96,7 +97,7 @@
     */
     
     NSArray *items =
-    [NSArray arrayWithObjects:spacer, add, spacer, play, spacer, config, spacer, nil];
+    [NSArray arrayWithObjects:spacer, play, spacer, config, spacer, nil];
     self.toolbarItems = items;
 }
 
@@ -121,7 +122,7 @@
 
 -(UIScrollView *)makeTabBarWithFrame:(CGRect)rect{
     UIScrollView *sv = [[UIScrollView alloc] initWithFrame:rect];
-    //sv.backgroundColor = [UIColor whiteColor];
+    sv.backgroundColor = [UIColor whiteColor];
     
     NSMutableArray *books = [[[BookModel alloc]init] findAll];
     int scrollAreaWidth = rect.size.width;
@@ -152,15 +153,18 @@
             label.layer.shadowOpacity = 0.2;
             label.layer.shadowOffset = CGSizeMake(2.0, 4.0);
             label.userInteractionEnabled = YES;
-            label.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+            label.font = [UIFont fontWithName:@"AppleGothic" size:10];
+            label.numberOfLines = 0;
             label.tag = [books[i] recodeId];
-            label.userInteractionEnabled = YES;
+            //label.userInteractionEnabled = YES;
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tabBookTitle:)];
             [label addGestureRecognizer:tap];
             [scrollArea addSubview:label];
             if (selectedBookLabel == nil) {
                 label.backgroundColor = [UIColor redColor];
                 selectedBookLabel = label;
+            } else {
+                label.backgroundColor = [UIColor grayColor];
             }
         }
     }
@@ -169,17 +173,19 @@
     sv.showsHorizontalScrollIndicator = NO;
     sv.tag = @"tabBar";
     
-    UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, scrollAreaWidth, 5)];
+    UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(-300, 30, scrollAreaWidth+500, 5)];
     [line setBackgroundColor:[UIColor redColor]];
     [sv addSubview:line];
     
     return sv;
 }
 
+/*
 - (void)add{
     UIViewController *avc = [[WordAddViewController alloc] initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:avc animated:YES];
 }
+ */
 
 - (void)play{
     WordPlayViewController *pvc = [[WordPlayViewController alloc] initWithNibName:nil bundle:nil];
@@ -327,7 +333,7 @@
     [index reloadData];
     
     label.backgroundColor = [UIColor redColor];
-    selectedBookLabel.backgroundColor = [UIColor whiteColor];
+    selectedBookLabel.backgroundColor = [UIColor grayColor];
     selectedBookLabel = label;
 }
 
