@@ -156,7 +156,6 @@
             label.font = [UIFont fontWithName:@"AppleGothic" size:10];
             label.numberOfLines = 0;
             label.tag = [books[i] recodeId];
-            //label.userInteractionEnabled = YES;
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tabBookTitle:)];
             [label addGestureRecognizer:tap];
             [scrollArea addSubview:label];
@@ -209,7 +208,8 @@
         ConfigModel *cm = [[ConfigModel alloc]init];
         if ([cm isRegisted]) {
             NSString *postData = [[NSString alloc] initWithFormat:@"user[email]=%@&user[password]=%@", cm.email, cm.password];
-            NSString *urlstr = @"http://localhost:3000/api/books";
+            //NSString *urlstr = @"http://localhost:3000/api/books";
+            NSString *urlstr = @"http://hello-word.herokuapp.com/api/books";
             NSURL *url = [NSURL URLWithString:urlstr];
         
             NSData *myRequestData = [postData dataUsingEncoding:NSUTF8StringEncoding];

@@ -23,8 +23,8 @@
     } else {
         if (indexPath.section == 1) {
             NSString *postData = [[NSString alloc] initWithFormat:@"user[email]=%@&user[password]=%@", emailTf.text, passwordTf.text];
-            //NSString *urlstr = @"http://hello-word.herokuapp.com/api/users/sign_in_by_mobile";
-            NSString *urlstr = @"http://localhost:3000/api/users/sign_in_by_mobile";
+            NSString *urlstr = @"http://hello-word.herokuapp.com/api/users/sign_in_by_mobile";
+            //NSString *urlstr = @"http://localhost:3000/api/users/sign_in_by_mobile";
             NSURL *url = [NSURL URLWithString:urlstr];
             
             NSData *myRequestData = [postData dataUsingEncoding:NSUTF8StringEncoding];
