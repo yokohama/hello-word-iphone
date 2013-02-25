@@ -172,7 +172,12 @@
     sv.showsHorizontalScrollIndicator = NO;
     sv.tag = @"tabBar";
     
-    UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(-300, 30, scrollAreaWidth+500, 5)];
+    UILabel *line = nil;
+    if (scrollAreaWidth < sv.frame.size.width) {
+        line = [[UILabel alloc] initWithFrame:CGRectMake(-300, 30, sv.frame.size.width+500, 5)];
+    } else {
+        line = [[UILabel alloc] initWithFrame:CGRectMake(-300, 30, scrollAreaWidth+500, 5)];
+    }
     [line setBackgroundColor:[UIColor redColor]];
     [sv addSubview:line];
     
@@ -187,9 +192,19 @@
  */
 
 - (void)play{
-    WordPlayViewController *pvc = [[WordPlayViewController alloc] initWithNibName:nil bundle:nil];
-    pvc.records = records;
-    [self.navigationController pushViewController:pvc animated:YES];
+    if ([records count] == 0) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"Error"
+                              message:@"再生する単語がありません。下にスクロールしてデータを更新してください。"
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        [alert show];
+    } else {
+        WordPlayViewController *pvc = [[WordPlayViewController alloc] initWithNibName:nil bundle:nil];
+        pvc.records = records;
+        [self.navigationController pushViewController:pvc animated:YES];
+    }
 }
 
 - (void)config{
@@ -207,10 +222,15 @@
     if (y < (-50.0)) {
         ConfigModel *cm = [[ConfigModel alloc]init];
         if ([cm isRegisted]) {
+            
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"plist"];
+            NSDictionary *plist = [NSDictionary dictionaryWithContentsOfFile:path];
+            NSString *urlstr = [[NSString alloc] initWithFormat:@"%@/api/books", [plist objectForKey:@"API URL"]];
+            
             NSString *postData = [[NSString alloc] initWithFormat:@"user[email]=%@&user[password]=%@", cm.email, cm.password];
-            //NSString *urlstr = @"http://localhost:3000/api/books";
-            NSString *urlstr = @"http://hello-word.herokuapp.com/api/books";
             NSURL *url = [NSURL URLWithString:urlstr];
+            
+            NSLog(@"%@", urlstr);
         
             NSData *myRequestData = [postData dataUsingEncoding:NSUTF8StringEncoding];
             NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: url];

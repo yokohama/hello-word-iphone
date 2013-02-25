@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8518F61D16DB446000F6685D /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8518F61C16DB446000F6685D /* config.plist */; };
+		8518F61F16DB45F000F6685D /* memo.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8518F61E16DB45F000F6685D /* memo.strings */; };
 		85213C6316BE95760007D484 /* WordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 85213C6216BE95760007D484 /* WordModel.m */; };
 		85213C6916BEA6370007D484 /* Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 85213C6816BEA6370007D484 /* Validation.m */; };
 		85213C8016C2B37D0007D484 /* WordEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85213C7F16C2B37D0007D484 /* WordEditViewController.m */; };
@@ -74,6 +76,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8518F61C16DB446000F6685D /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+		8518F61E16DB45F000F6685D /* memo.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = memo.strings; sourceTree = "<group>"; };
 		85213C6116BE95760007D484 /* WordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordModel.h; sourceTree = "<group>"; };
 		85213C6216BE95760007D484 /* WordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordModel.m; sourceTree = "<group>"; };
 		85213C6716BEA6370007D484 /* Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Validation.h; sourceTree = "<group>"; };
@@ -190,6 +194,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8518F61B16DB445100F6685D /* config */ = {
+			isa = PBXGroup;
+			children = (
+				8518F61C16DB446000F6685D /* config.plist */,
+				8518F61E16DB45F000F6685D /* memo.strings */,
+			);
+			name = config;
+			sourceTree = "<group>";
+		};
 		85213C8216C2C3910007D484 /* word */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +256,7 @@
 		85A3274D16BD55D100FC3B3F /* HelloWord */ = {
 			isa = PBXGroup;
 			children = (
+				8518F61B16DB445100F6685D /* config */,
 				85ED392016D8B22B00887029 /* view */,
 				85ED391F16D8B21600887029 /* controller */,
 				85ED391E16D8B1C700887029 /* model */,
@@ -498,6 +512,8 @@
 				85B2433E16D667FD007C0553 /* AppledocSettings.plist in Resources */,
 				85B2434216D66804007C0553 /* RegenerateApiDocumentation in Resources */,
 				85B2434316D66804007C0553 /* RegenerateCredits in Resources */,
+				8518F61D16DB446000F6685D /* config.plist in Resources */,
+				8518F61F16DB45F000F6685D /* memo.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
