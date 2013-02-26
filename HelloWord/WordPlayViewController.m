@@ -62,11 +62,14 @@
     
     UIView *playBarArea = [[UIView alloc] initWithFrame:CGRectMake(0, 380, self.view.frame.size.width, 40)];
     playBarArea.backgroundColor = [UIColor redColor];
+    playBarArea.layer.shadowOpacity = 0.4;
+    playBarArea.layer.shadowOffset = CGSizeMake(0.0, -2.0);
 
     [self.view addSubview:playBarArea];
     
     page = [[UILabel alloc] initWithFrame:CGRectMake(playBarArea.frame.size.width/2, 0, 80, 20)];
     page.text = [[NSString alloc] initWithFormat:@"%d", pageIndex];
+    
     [playBarArea addSubview:page];
 }
 

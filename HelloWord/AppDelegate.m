@@ -8,21 +8,23 @@
 
 #import "AppDelegate.h"
 
-#import "WordAddViewController.h"
+//#import "WordAddViewController.h"
 #import "WordIndexViewController.h"
+#import "WordIndexPageViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
-    WordIndexViewController *ivc = [[WordIndexViewController alloc] initWithNibName:nil bundle:nil];
+    
+    //WordIndexViewController *ivc = [[WordIndexViewController alloc] initWithNibName:nil bundle:nil];
+    UIViewController *ivc = [[WordIndexPageViewController alloc] initWithBookId:1];
     UINavigationController *naviController = [[UINavigationController alloc] initWithRootViewController:ivc];
      
-     self.window.rootViewController = naviController;
+    self.window.rootViewController = naviController;
     
-    [self.window makeKeyAndVisible];
+    [self.window makeKeyAndVisible];    
     return YES;
 }
 

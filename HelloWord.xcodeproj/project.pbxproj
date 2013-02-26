@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		8518F61D16DB446000F6685D /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8518F61C16DB446000F6685D /* config.plist */; };
 		8518F61F16DB45F000F6685D /* memo.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8518F61E16DB45F000F6685D /* memo.strings */; };
+		8518F62516DC5A3600F6685D /* TabScrollAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8518F62416DC5A3600F6685D /* TabScrollAreaView.m */; };
+		8518F63116DC6F1B00F6685D /* WordListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8518F63016DC6F1B00F6685D /* WordListViewController.m */; };
+		8518F63716DC868D00F6685D /* WordIndexPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8518F63616DC868D00F6685D /* WordIndexPageViewController.m */; };
+		8518F63A16DCFFEB00F6685D /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8518F63916DCFFEB00F6685D /* TabBar.m */; };
 		85213C6316BE95760007D484 /* WordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 85213C6216BE95760007D484 /* WordModel.m */; };
 		85213C6916BEA6370007D484 /* Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 85213C6816BEA6370007D484 /* Validation.m */; };
 		85213C8016C2B37D0007D484 /* WordEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85213C7F16C2B37D0007D484 /* WordEditViewController.m */; };
@@ -78,6 +82,14 @@
 /* Begin PBXFileReference section */
 		8518F61C16DB446000F6685D /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		8518F61E16DB45F000F6685D /* memo.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = memo.strings; sourceTree = "<group>"; };
+		8518F62316DC5A3600F6685D /* TabScrollAreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabScrollAreaView.h; sourceTree = "<group>"; };
+		8518F62416DC5A3600F6685D /* TabScrollAreaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabScrollAreaView.m; sourceTree = "<group>"; };
+		8518F62F16DC6F1A00F6685D /* WordListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordListViewController.h; sourceTree = "<group>"; };
+		8518F63016DC6F1B00F6685D /* WordListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordListViewController.m; sourceTree = "<group>"; };
+		8518F63516DC868C00F6685D /* WordIndexPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordIndexPageViewController.h; sourceTree = "<group>"; };
+		8518F63616DC868D00F6685D /* WordIndexPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordIndexPageViewController.m; sourceTree = "<group>"; };
+		8518F63816DCFFEB00F6685D /* TabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBar.h; sourceTree = "<group>"; };
+		8518F63916DCFFEB00F6685D /* TabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBar.m; sourceTree = "<group>"; };
 		85213C6116BE95760007D484 /* WordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordModel.h; sourceTree = "<group>"; };
 		85213C6216BE95760007D484 /* WordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordModel.m; sourceTree = "<group>"; };
 		85213C6716BEA6370007D484 /* Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Validation.h; sourceTree = "<group>"; };
@@ -218,6 +230,10 @@
 				85299C5516C386A0000B5DBE /* WordTicketViewController.m */,
 				85B242FE16CC01FA007C0553 /* WordIndexViewController.h */,
 				85B242FF16CC01FA007C0553 /* WordIndexViewController.m */,
+				8518F62F16DC6F1A00F6685D /* WordListViewController.h */,
+				8518F63016DC6F1B00F6685D /* WordListViewController.m */,
+				8518F63516DC868C00F6685D /* WordIndexPageViewController.h */,
+				8518F63616DC868D00F6685D /* WordIndexPageViewController.m */,
 			);
 			name = word;
 			sourceTree = "<group>";
@@ -427,6 +443,10 @@
 			children = (
 				85299CAC16C3FDD8000B5DBE /* TextFieldFactory.m */,
 				85299CAB16C3FDD8000B5DBE /* TextFieldFactory.h */,
+				8518F62316DC5A3600F6685D /* TabScrollAreaView.h */,
+				8518F62416DC5A3600F6685D /* TabScrollAreaView.m */,
+				8518F63816DCFFEB00F6685D /* TabBar.h */,
+				8518F63916DCFFEB00F6685D /* TabBar.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -579,6 +599,10 @@
 				85B2433A16D667F5007C0553 /* SBJsonStreamWriterState.m in Sources */,
 				85B2433B16D667F5007C0553 /* SBJsonWriter.m in Sources */,
 				85B2434616D6898D007C0553 /* BookModel.m in Sources */,
+				8518F62516DC5A3600F6685D /* TabScrollAreaView.m in Sources */,
+				8518F63116DC6F1B00F6685D /* WordListViewController.m in Sources */,
+				8518F63716DC868D00F6685D /* WordIndexPageViewController.m in Sources */,
+				8518F63A16DCFFEB00F6685D /* TabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

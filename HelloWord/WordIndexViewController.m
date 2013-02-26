@@ -167,6 +167,7 @@
             }
         }
     }
+    
     [sv addSubview:scrollArea];
     sv.contentSize = scrollArea.bounds.size;
     sv.showsHorizontalScrollIndicator = NO;
@@ -313,19 +314,22 @@
         }
         [newBooks addObject:bm];
     }
-    [[[BookModel alloc]init] rehash:newBooks];
     
-    CGRect r = [[UIScreen mainScreen] bounds];
-    CGFloat w = r.size.width;
+    if ([newBooks count] > 0) {
+        [[[BookModel alloc]init] rehash:newBooks];
     
-    [[self.view viewWithTag:@"tabBar"] removeFromSuperview];
+        CGRect r = [[UIScreen mainScreen] bounds];
+        CGFloat w = r.size.width;
+    
+        [[self.view viewWithTag:@"tabBar"] removeFromSuperview];
 
-    tabBar = [self makeTabBarWithFrame:CGRectMake(0, 0, w, 35)];
-    [self.view addSubview:tabBar];
+        tabBar = [self makeTabBarWithFrame:CGRectMake(0, 0, w, 35)];
+        [self.view addSubview:tabBar];
     
-    WordModel *wm = [[WordModel alloc] init];
-    records = [wm findByBookId:bookId];
-    [index reloadData];
+        WordModel *wm = [[WordModel alloc] init];
+        records = [wm findByBookId:bookId];
+        [index reloadData];
+    }
 }
 
 //通信完了時の処理
@@ -344,18 +348,7 @@
     [alert show];
 }
 
-- (void)tabBookTitle: (UITapGestureRecognizer *)sender{
-    UILabel *label = (UILabel *)sender.view;
-    bookId = label.tag;
-    WordModel *wm = [[WordModel alloc] init];
-    records = [wm findByBookId:bookId];
-    count.text = count.text = [NSString stringWithFormat:@"%d 件", [records count]];
-    [index reloadData];
-    
-    label.backgroundColor = [UIColor redColor];
-    selectedBookLabel.backgroundColor = [UIColor grayColor];
-    selectedBookLabel = label;
-}
+
 
 @end
 

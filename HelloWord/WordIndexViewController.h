@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "TabScrollView.h"
 
 @interface WordIndexViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
     NSMutableArray *records;

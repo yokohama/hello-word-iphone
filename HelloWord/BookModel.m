@@ -25,6 +25,11 @@
     FMResultSet *result = [db executeQuery:sql];
     if ([result next]) {
         recordId = [result intForColumn:@"id"];
+        if (recordId == 0) {
+            recodeId = 1;
+        } else {
+            recodeId = recordId;
+        }
         title = [result stringForColumn:@"title"];
     }
     [db close];
