@@ -8,7 +8,7 @@
 
 #import "WordAddViewController.h"
 
-#import "WordIndexViewController.h"
+//#import "WordIndexViewController.h"
 #import "WordModel.h"
 #import "TextFieldFactory.h"
 

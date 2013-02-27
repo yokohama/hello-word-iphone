@@ -19,6 +19,12 @@
     return self;
 }
 
+-(id)initWithBookId:(int)bookId {
+    self = [super initWithCreateSql:BOOK_CREATE_SQL];
+    words = [NSMutableArray array];
+    return [self find:bookId];
+}
+
 -(BookModel *)find:(int)recordId{
     [db open];
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM books WHERE id = %d", recordId];
@@ -33,6 +39,9 @@
         title = [result stringForColumn:@"title"];
     }
     [db close];
+    
+    self.words = [[[WordModel alloc] init] findByBookId:recodeId];
+    
     return self;
 }
 

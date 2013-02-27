@@ -41,9 +41,11 @@
     [header addSubview:count];
     self.tableView.tableHeaderView = header;
     
+    /*
     UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, (0- REFRESH_VIEW_HEIGHT), self.view.frame.size.width, REFRESH_VIEW_HEIGHT)];
     refreshView.backgroundColor = [UIColor purpleColor];
     [self.view addSubview:refreshView];
+     */
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,6 +101,7 @@
     return cell;
 }
 
+/*
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     return;
@@ -150,7 +153,7 @@
     for (int i=0; i<[books count]; i++) {
         BookModel *bm = [[BookModel alloc]init];
         bm.title = [books[i] objectForKey:@"title"];
-     
+        
         NSMutableArray *arrayWords = [books[i] objectForKey:@"words"];
         for (int iw=0; iw<[arrayWords count]; iw++) {
             NSDictionary *word = arrayWords[iw];
@@ -163,6 +166,7 @@
     
     if ([newBooks count] > 0) {
         [[[BookModel alloc]init] rehash:newBooks];
+        
         WordModel *wm = [[WordModel alloc] init];
         records = [wm findByBookId:bookId];
         [self.tableView reloadData];
@@ -187,6 +191,9 @@
                           otherButtonTitles:nil];
     [alert show];
 }
+ */
+
+
 
 @end
 

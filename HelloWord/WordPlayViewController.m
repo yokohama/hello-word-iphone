@@ -60,17 +60,19 @@
     
     [pageArea addSubview:pageViewController.view];
     
-    UIView *playBarArea = [[UIView alloc] initWithFrame:CGRectMake(0, 380, self.view.frame.size.width, 40)];
-    playBarArea.backgroundColor = [UIColor redColor];
+    playBarArea = [[UIView alloc] initWithFrame:CGRectMake(0, 380, self.view.frame.size.width, 40)];
+    playBarArea.backgroundColor = [UIColor grayColor];
     playBarArea.layer.shadowOpacity = 0.4;
     playBarArea.layer.shadowOffset = CGSizeMake(0.0, -2.0);
-
     [self.view addSubview:playBarArea];
     
-    page = [[UILabel alloc] initWithFrame:CGRectMake(playBarArea.frame.size.width/2, 0, 80, 20)];
-    page.text = [[NSString alloc] initWithFormat:@"%d", pageIndex];
-    
-    [playBarArea addSubview:page];
+    CGRect rect = CGRectMake(10, 8, 300, 0);
+    slider = [[UISlider alloc]initWithFrame:rect];
+    slider.minimumValue = 0;
+    slider.maximumValue = pageMax-1;
+    slider.value = 0;
+    [slider addTarget:self action:@selector(sliderShift:) forControlEvents:UIControlEventValueChanged];
+    [playBarArea addSubview:slider];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -118,13 +120,17 @@
     if (completed) {
         WordTicketViewController *vc = [previousViewControllers objectAtIndex:0];
         vc.pageIndex = pageIndex;
-        page.text = [[NSString alloc] initWithFormat:@"%d", pageIndex];
+        slider.value = pageIndex-1;
     }
 }
 
 - (int)getPageIndex:(WordTicketViewController*)vc
 {
     return vc.pageIndex;
+}
+
+- (void)sliderShift :(id)sender {
+    
 }
 
 @end

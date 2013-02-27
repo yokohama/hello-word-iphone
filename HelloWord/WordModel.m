@@ -69,12 +69,8 @@
 
 -(void)create{
     NSString *sql = [[NSString alloc] initWithFormat:@"INSERT INTO words ('id', 'book_id', 'word', 'answer') VALUES(NULL, '%d', '%@', '%@');",  bookId, word, answer];
-    //NSLog(sql);
     [db open];
     [db executeUpdate:sql];
-    //int createRowId = [db lastInsertRowId];
-    //NSLog(@"%@", sql);
-    //NSLog(@"%d", createRowId);
     [db close];
 }
 

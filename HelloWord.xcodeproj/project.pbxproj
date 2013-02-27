@@ -49,7 +49,6 @@
 		85A327BB16BD701900FC3B3F /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A327B216BD701900FC3B3F /* FMResultSet.m */; };
 		85A327BC16BD701900FC3B3F /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A327B216BD701900FC3B3F /* FMResultSet.m */; };
 		85B242F916CBF0B8007C0553 /* ConfigListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B242F816CBF0B8007C0553 /* ConfigListViewController.m */; };
-		85B2430016CC01FB007C0553 /* WordIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B242FF16CC01FA007C0553 /* WordIndexViewController.m */; };
 		85B2431116D47089007C0553 /* AccountConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2431016D47089007C0553 /* AccountConfigViewController.m */; };
 		85B2431716D617B6007C0553 /* ConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2431616D617B6007C0553 /* ConfigModel.m */; };
 		85B2431A16D61AA1007C0553 /* Db.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2431916D61AA1007C0553 /* Db.m */; };
@@ -144,8 +143,6 @@
 		85A327B216BD701900FC3B3F /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		85B242F716CBF0B8007C0553 /* ConfigListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigListViewController.h; sourceTree = "<group>"; };
 		85B242F816CBF0B8007C0553 /* ConfigListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigListViewController.m; sourceTree = "<group>"; };
-		85B242FE16CC01FA007C0553 /* WordIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordIndexViewController.h; sourceTree = "<group>"; };
-		85B242FF16CC01FA007C0553 /* WordIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordIndexViewController.m; sourceTree = "<group>"; };
 		85B2430C16D20004007C0553 /* hello_word.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = hello_word.db; sourceTree = "<group>"; };
 		85B2430F16D47089007C0553 /* AccountConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountConfigViewController.h; sourceTree = "<group>"; };
 		85B2431016D47089007C0553 /* AccountConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountConfigViewController.m; sourceTree = "<group>"; };
@@ -228,8 +225,6 @@
 				85213C7F16C2B37D0007D484 /* WordEditViewController.m */,
 				85299C5416C386A0000B5DBE /* WordTicketViewController.h */,
 				85299C5516C386A0000B5DBE /* WordTicketViewController.m */,
-				85B242FE16CC01FA007C0553 /* WordIndexViewController.h */,
-				85B242FF16CC01FA007C0553 /* WordIndexViewController.m */,
 				8518F62F16DC6F1A00F6685D /* WordListViewController.h */,
 				8518F63016DC6F1B00F6685D /* WordListViewController.m */,
 				8518F63516DC868C00F6685D /* WordIndexPageViewController.h */,
@@ -584,7 +579,6 @@
 				85299C5616C386A0000B5DBE /* WordTicketViewController.m in Sources */,
 				85299CAD16C3FDD8000B5DBE /* TextFieldFactory.m in Sources */,
 				85B242F916CBF0B8007C0553 /* ConfigListViewController.m in Sources */,
-				85B2430016CC01FB007C0553 /* WordIndexViewController.m in Sources */,
 				85B2431116D47089007C0553 /* AccountConfigViewController.m in Sources */,
 				85B2431716D617B6007C0553 /* ConfigModel.m in Sources */,
 				85B2431A16D61AA1007C0553 /* Db.m in Sources */,

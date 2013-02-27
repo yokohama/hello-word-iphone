@@ -15,9 +15,12 @@
     UIPageViewController *pageViewController;
     int pageIndex;
     int pageMax;
-    UILabel *page;
+    UISlider *slider;
     
     NSArray *records;
+    
+    UIView *playBarArea;
+    UILabel *point;
 }
 
 @property (nonatomic, strong, readwrite) NSArray *records;

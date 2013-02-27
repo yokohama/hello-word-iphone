@@ -21,6 +21,7 @@
 @property(nonatomic, strong, readwrite) NSMutableArray *words;
 
 -(id)init;
+-(id)initWithBookId :(int)bookId;
 -(BookModel *)find :(int)recordId;
 -(NSMutableArray *)findAll;
 -(void)destroy;

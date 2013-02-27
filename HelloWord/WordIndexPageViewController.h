@@ -14,6 +14,7 @@
 #import "WordPlayViewController.h"
 
 @interface WordIndexPageViewController : UIViewController <UIPageViewControllerDelegate,UIPageViewControllerDataSource>{
+    UIScrollView *pageArea;
     UIPageViewController *pageViewController;
     WordListViewController *wordListViewController;
     

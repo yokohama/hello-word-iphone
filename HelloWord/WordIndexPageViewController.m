@@ -27,66 +27,57 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.toolbar.tintColor = [UIColor blackColor];
     
-    CGRect r = [[UIScreen mainScreen] bounds];
-    CGFloat w = r.size.width;
-    
-    tabBar = [[TabBar alloc] initWithFrame:CGRectMake(0, 0, w, 35) delegateController:self];
-    //tabBar.tag = @"tabBar";
-    
+    tabBar = [[TabBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 35) delegateController:self];
     [self.view addSubview:tabBar];
     
     UIBarButtonItem *spacer = [[UIBarButtonItem alloc]
                                initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                target:nil action:nil];
-    
     //UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add)];
-    
     UIBarButtonItem *play = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(play)];
     UIBarButtonItem *config = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(config)];
-    
     NSArray *items =
     [NSArray arrayWithObjects:spacer, play, spacer, config, spacer, nil];
     self.toolbarItems = items;
     
-    UIView *pageArea = [[UIView alloc] initWithFrame:CGRectMake(0, tabBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - 80)];
+    
+    pageArea = [[UIScrollView alloc] initWithFrame:CGRectMake(0, tabBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - 80)];
+    [self makePageView:CGRectMake(0, 0, pageArea.frame.size.width, pageArea.frame.size.height)];
+    [pageArea addSubview:pageViewController.view];
+    
+    //UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, (0- 200), pageArea.frame.size.width, 200)];
+    //refreshView.backgroundColor = [UIColor purpleColor];
+    //[pageArea addSubview:refreshView];
+    
     [self.view addSubview:pageArea];
-    pageArea.backgroundColor = [UIColor yellowColor];
+}
+
+-(void)makePageView :(CGRect)rect{
+    [pageViewController removeFromParentViewController];
     
     //ページめくり
-    BookModel *bm = [[BookModel alloc] init];
-    bm = [bm find:bookId];
+    BookModel *bm = [[[BookModel alloc] init] find:bookId];
     pageMax = [books count];
     
-    pageIndex = 1;
     for (int i=0; i<[books count]; i++) {
-        BookModel *b = books[i];
-        if (b.recodeId == bookId) {
-            pageIndex = i+1;
-        }
+        if ([books[i] recodeId] == bookId) {pageIndex = i+1;}
     }
+    
+    [self setWordListViewController:bm.recodeId];
+    NSArray *viewControllers = [NSArray arrayWithObject:wordListViewController];
     
     pageViewController = [[UIPageViewController alloc]
                           initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl
                           navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                           options:nil];
-    
     pageViewController.delegate = self;
     pageViewController.dataSource = self;
-    pageViewController.view.frame = CGRectMake(0, 0, pageArea.frame.size.width, pageArea.frame.size.height);
+    pageViewController.view.frame = rect;
     pageViewController.view.backgroundColor = [UIColor whiteColor];
-
-    [self setWordListViewController:bm.recodeId];
-    NSArray *viewControllers = [NSArray arrayWithObject:wordListViewController];
     [pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];
-    
     [pageViewController setDoubleSided:NO];
-    
     [self addChildViewController:pageViewController];
-    
-    [self.navigationController setNavigationBarHidden:NO];
-    [self.navigationController setToolbarHidden:YES];
-    
-    [pageArea addSubview:pageViewController.view];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -133,8 +124,6 @@
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed{
-    
-    //ページが最後までめくられたら、ページを再設定
     if (completed) {
         BookModel *bm = books[pageIndex-1];
         [self setWordListViewController:bm.recodeId];
@@ -184,19 +173,96 @@
 - (void)tabBookTitle: (UITapGestureRecognizer *)sender{
     UILabel *label = (UILabel *)sender.view;
     bookId = label.tag;
-    WordModel *wm = [[WordModel alloc] init];
-    wordListViewController.records = [wm findByBookId:bookId];
-    wordListViewController.count.text = [NSString stringWithFormat:@"%d 件", [wordListViewController.records count]];
-    for (int i=0; i<[books count]; i++) {
-        if (label.tag == [books[i] recodeId]) {
-            pageIndex = i+1;
-            wordListViewController.pageIndex = pageIndex;
+    [self makePageView:CGRectMake(0, 0, pageArea.frame.size.width, pageArea.frame.size.height)];
+    [pageArea addSubview:pageViewController.view];
+    [tabBar changeLabel:label];
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    return;
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    float y = scrollView.contentOffset.y;
+    if (y < (-50.0)) {
+        ConfigModel *cm = [[ConfigModel alloc]init];
+        if ([cm isRegisted]) {
+            
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"plist"];
+            NSDictionary *plist = [NSDictionary dictionaryWithContentsOfFile:path];
+            NSString *urlstr = [[NSString alloc] initWithFormat:@"%@/api/books", [plist objectForKey:@"API URL"]];
+            
+            NSString *postData = [[NSString alloc] initWithFormat:@"user[email]=%@&user[password]=%@", cm.email, cm.password];
+            NSURL *url = [NSURL URLWithString:urlstr];
+            
+            NSLog(@"%@", urlstr);
+            
+            NSData *myRequestData = [postData dataUsingEncoding:NSUTF8StringEncoding];
+            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: url];
+            [request setHTTPMethod: @"POST"];
+            [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
+            [request setHTTPBody: myRequestData];
+            
+            //TODO:戻り値使わないのに、変数に格納しないとワーニング。どういうこと？
+            [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle:@"Error"
+                                  message:@"サーバーから単語帳を取得するには、設定から認証をおこなってください。"
+                                  delegate:self
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+            [alert show];
         }
     }
-    [wordListViewController.tableView reloadData];
+    return;
+}
+
+//ダウンロード完了時の処理
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    NSDictionary *jsonDic = [parser objectWithData: data];
+    //NSLog(@"JSON dictionary=%@", [jsonDic description]);
+    NSMutableArray *jBooks = [jsonDic objectForKey:@"books"];
+    NSMutableArray *newBooks = [NSMutableArray array];
+    for (int i=0; i<[jBooks count]; i++) {
+        BookModel *bm = [[BookModel alloc]init];
+        bm.title = [jBooks[i] objectForKey:@"title"];
+        
+        NSMutableArray *arrayWords = [jBooks[i] objectForKey:@"words"];
+        for (int iw=0; iw<[arrayWords count]; iw++) {
+            NSDictionary *word = arrayWords[iw];
+            WordModel *wm = [[WordModel alloc] initWithValues:[word objectForKey:@"word"] answer:[word objectForKey:@"answer"]];
+            //NSLog(@"%@", wm.word);
+            [bm.words addObject:wm];
+        }
+        [newBooks addObject:bm];
+    }
     
-    [tabBar changeLabel:label];
-    
+    if ([newBooks count] > 0) {
+        [[[BookModel alloc]init] rehash:newBooks];
+        bookId = 1;
+        [self makePageView:CGRectMake(0, 0, pageArea.frame.size.width, pageArea.frame.size.height)];
+        [pageArea addSubview:pageViewController.view];
+        [tabBar changeLabel:tabBar.labels[0]];
+    }
+}
+
+//通信完了時の処理
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"hoge3");
+}
+
+//通信エラー処理
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"Error"
+                          message:@"サーバーに接続ができませんでした。"
+                          delegate:self
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil];
+    [alert show];
 }
 
 

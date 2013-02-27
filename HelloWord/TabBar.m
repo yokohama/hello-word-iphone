@@ -55,21 +55,20 @@
             break;
         }
     }
-    
-    NSLog(@"%f", zoom);
+
+    //NSLog(@"%f", zoom);
     CGRect rect = CGRectMake(zoom+40, 0, 100, 100);
     [self scrollRectToVisible:rect animated:YES];
 }
 
 -(void)rehash:(NSMutableArray *)books {
+    labels = [NSMutableArray array];
     [self makeTabs:books];
-    UILabel *current = labels[0];
-    [self changeLabel:current];
+    [self changeLabel:labels[0]];
 }
 
 -(void)makeTabs :(NSMutableArray *)books{
-    
-    [[self viewWithTag:@"scrollArea"] removeFromSuperview];
+    [scrollArea removeFromSuperview];
     
     int scrollAreaWidth = self.frame.size.width;
     int tabBarWidthSize = 0;
@@ -102,6 +101,7 @@
             label.font = [UIFont fontWithName:@"AppleGothic" size:10];
             label.numberOfLines = 0;
             label.tag = [books[i] recodeId];
+            //NSLog(@"%d", label.tag);
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:delegateController action:@selector(tabBookTitle:)];
             [label addGestureRecognizer:tap];
             [scrollArea addSubview:label];
@@ -114,7 +114,6 @@
             [labels addObject:label];
         }
     }
-    scrollArea.tag = @"scrollArea";
     
     [self addSubview:scrollArea];
     self.contentSize = scrollArea.bounds.size;
@@ -128,6 +127,16 @@
     }
     [line setBackgroundColor:[UIColor redColor]];
     [self addSubview:line];
+}
+
+- (int)getLabelIndex:(UILabel *)label {
+    int *result = nil;
+    for (int i=0; i<[labels count]; i++) {
+        if (label.tag == [labels[i] tag]) {
+            result = i+1;
+        }
+    }
+    return result;
 }
 
 /*

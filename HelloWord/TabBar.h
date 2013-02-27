@@ -27,5 +27,6 @@
 - (UILabel *)findByBookId:(int)_bookId;
 - (void)changeLabel :(UILabel *)label;
 - (void)rehash :(NSMutableArray *)books;
+- (int)getLabelIndex :(UILabel *)label;
 
 @end
