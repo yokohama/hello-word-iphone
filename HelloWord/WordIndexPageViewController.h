@@ -17,16 +17,13 @@
     UIPageViewController *pageViewController;
     WordListViewController *wordListViewController;
     
-    UIScrollView *tabBar;
+    TabBar *tabBar;
     int bookId;
     NSMutableArray *books;
     
     int pageIndex;
     int pageMax;
     UILabel *page;
-    
-    UILabel *selectedLabel;
-
 }
 
 - (id)initWithBookId :(int)_bookId;

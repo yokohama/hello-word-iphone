@@ -30,8 +30,8 @@
     CGRect r = [[UIScreen mainScreen] bounds];
     CGFloat w = r.size.width;
     
-    tabBar = [[TabBar alloc] initWithFrame:CGRectMake(0, 0, w, 35) selectedLabel:selectedLabel delegateController:self];
-    tabBar.tag = @"tabBar";
+    tabBar = [[TabBar alloc] initWithFrame:CGRectMake(0, 0, w, 35) delegateController:self];
+    //tabBar.tag = @"tabBar";
     
     [self.view addSubview:tabBar];
     
@@ -95,7 +95,7 @@
 }
 
 - (void)setWordListViewController:(int)_bookId{
-    wordListViewController = [[WordListViewController alloc] initWithBookId:_bookId invorked:self];
+    wordListViewController = [[WordListViewController alloc] initWithBookId:_bookId invorked:self tabBar:tabBar];
     wordListViewController.pageIndex = pageIndex;
 }
 
@@ -141,6 +141,13 @@
         wordListViewController = [previousViewControllers objectAtIndex:0];
         wordListViewController.pageIndex = pageIndex;
         page.text = [[NSString alloc] initWithFormat:@"%d", pageIndex];
+        
+        for (int i=0; i<[tabBar.labels count]; i++) {
+            UILabel *label = tabBar.labels[i];
+            if (label.tag == bm.recodeId) {
+                [tabBar changeLabel:tabBar.labels[i]];
+            }
+        }
     }
 }
 
@@ -180,26 +187,15 @@
     WordModel *wm = [[WordModel alloc] init];
     wordListViewController.records = [wm findByBookId:bookId];
     wordListViewController.count.text = [NSString stringWithFormat:@"%d 件", [wordListViewController.records count]];
-    //[wordListViewController.tableView reloadData];
-    
-    NSLog(@"selectedLabel=%d label=%d", selectedLabel.tag, label.tag);
-    
-    if (selectedLabel.tag != label.tag) {
-        label.backgroundColor = [UIColor redColor];
-        selectedLabel.backgroundColor = [UIColor grayColor];
+    for (int i=0; i<[books count]; i++) {
+        if (label.tag == [books[i] recodeId]) {
+            pageIndex = i+1;
+            wordListViewController.pageIndex = pageIndex;
+        }
     }
-    selectedLabel = label;
+    [wordListViewController.tableView reloadData];
     
-    [[self.view viewWithTag:@"index"] removeFromSuperview];
-    
-    CGRect r = [[UIScreen mainScreen] bounds];
-    CGFloat w = r.size.width;
-    /*
-    index = [[WordIndexPageViewController alloc] initWithInvorcedContoller:self selectedLabel:selectedBookLabel];
-    index.view.tag = @"index";
-    [index.view setFrame:CGRectMake(0, 35, w, (self.view.frame.size.height - tabBar.frame.size.height))];
-    [self.view addSubview:index.view];
-     */
+    [tabBar changeLabel:label];
     
 }
 

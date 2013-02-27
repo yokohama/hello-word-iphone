@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HelloWord/WordIndexPageViewController.h"
-         timestampString = "383594093.953561"
+         timestampString = "383659545.287652"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "33"
-         endingLineNumber = "33"
+         startingLineNumber = "30"
+         endingLineNumber = "30"
          landmarkName = "-setWordListViewController:"
          landmarkType = "4">
       </FileBreakpoint>

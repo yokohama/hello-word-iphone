@@ -14,8 +14,18 @@
 #import "WordModel.h"
 
 @interface TabBar : UIScrollView {
+    NSMutableArray *labels;
+    UILabel *currentLabel;
+    UIViewController *delegateController;
+    UIView *scrollArea;
 }
 
-- (id)initWithFrame:(CGRect)frame selectedLabel:(UILabel *)selectedLabel delegateController:(UIViewController *)controller;
+@property (nonatomic, strong, readwrite) NSMutableArray *labels;
+@property (nonatomic, strong, readwrite) UILabel *currentLabel;
+
+- (id)initWithFrame:(CGRect)frame delegateController:(UIViewController *)controller;
+- (UILabel *)findByBookId:(int)_bookId;
+- (void)changeLabel :(UILabel *)label;
+- (void)rehash :(NSMutableArray *)books;
 
 @end

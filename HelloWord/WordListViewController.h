@@ -22,6 +22,7 @@
     NSMutableArray *records;
     int bookId;
     UILabel *count;
+    TabBar *tabBar;
     
     int pageIndex;
     int recordeCount;
@@ -32,6 +33,7 @@
 @property (nonatomic, strong, readwrite) NSMutableArray *records;
 @property int bookId;
 
--(id)initWithBookId: (int)_bookId invorked:(UIViewController *)controller;
+//-(id)initWithBookId: (int)_bookId invorked:(UIViewController *)controller;
+-(id)initWithBookId :(int)_bookId invorked:(UIViewController *)controller tabBar:(TabBar *)_tabBar;
 
 @end

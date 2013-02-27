@@ -15,10 +15,11 @@
 
 @synthesize pageIndex, records, count, bookId;
 
--(id)initWithBookId: (int)_bookId invorked:(UIViewController *)controller {
+-(id)initWithBookId:(int)_bookId invorked:(UIViewController *)controller tabBar:(TabBar *)_tabBar {
     self = [super init];
     invorkedController = controller;
     bookId = _bookId;
+    tabBar = _tabBar;
     return self;
 }
 
@@ -141,41 +142,34 @@
 
 //ダウンロード完了時の処理
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-     SBJsonParser *parser = [[SBJsonParser alloc] init];
-     NSDictionary *jsonDic = [parser objectWithData: data];
-     //NSLog(@"JSON dictionary=%@", [jsonDic description]);
-     NSMutableArray *books = [jsonDic objectForKey:@"books"];
-     NSMutableArray *newBooks = [NSMutableArray array];
-     for (int i=0; i<[books count]; i++) {
-     BookModel *bm = [[BookModel alloc]init];
-     bm.title = [books[i] objectForKey:@"title"];
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    NSDictionary *jsonDic = [parser objectWithData: data];
+    //NSLog(@"JSON dictionary=%@", [jsonDic description]);
+    NSMutableArray *books = [jsonDic objectForKey:@"books"];
+    NSMutableArray *newBooks = [NSMutableArray array];
+    for (int i=0; i<[books count]; i++) {
+        BookModel *bm = [[BookModel alloc]init];
+        bm.title = [books[i] objectForKey:@"title"];
      
-     NSMutableArray *arrayWords = [books[i] objectForKey:@"words"];
-     for (int iw=0; iw<[arrayWords count]; iw++) {
-     NSDictionary *word = arrayWords[iw];
-     WordModel *wm = [[WordModel alloc] initWithValues:[word objectForKey:@"word"] answer:[word objectForKey:@"answer"]];
-     //NSLog(@"%@", wm.word);
-     [bm.words addObject:wm];
-     }
-     [newBooks addObject:bm];
-     }
-     
-     if ([newBooks count] > 0) {
-     [[[BookModel alloc]init] rehash:newBooks];
-     
-     CGRect r = [[UIScreen mainScreen] bounds];
-     CGFloat w = r.size.width;
-     
-     [[invorkedController.view viewWithTag:@"tabBar"] removeFromSuperview];
-     
-         /*
-     TabBar *tabBar = [[TabBar alloc] initWithFrame:CGRectMake(0, 0, w, 35) selectedLabel:selectedLabe delegateController:self];
-     [invorkedController.view addSubview:tabBar];
-     */
-     WordModel *wm = [[WordModel alloc] init];
-     records = [wm findByBookId:bookId];
-     [self.tableView reloadData];
-     }
+        NSMutableArray *arrayWords = [books[i] objectForKey:@"words"];
+        for (int iw=0; iw<[arrayWords count]; iw++) {
+            NSDictionary *word = arrayWords[iw];
+            WordModel *wm = [[WordModel alloc] initWithValues:[word objectForKey:@"word"] answer:[word objectForKey:@"answer"]];
+            //NSLog(@"%@", wm.word);
+            [bm.words addObject:wm];
+        }
+        [newBooks addObject:bm];
+    }
+    
+    if ([newBooks count] > 0) {
+        [[[BookModel alloc]init] rehash:newBooks];
+        WordModel *wm = [[WordModel alloc] init];
+        records = [wm findByBookId:bookId];
+        [self.tableView reloadData];
+        
+        NSMutableArray *newBookRecords = [[[BookModel alloc]init] findAll];
+        [tabBar rehash:newBookRecords];
+    }
 }
 
 //通信完了時の処理

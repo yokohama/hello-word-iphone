@@ -72,9 +72,9 @@
     //NSLog(sql);
     [db open];
     [db executeUpdate:sql];
-    int createRowId = [db lastInsertRowId];
-    NSLog(@"%@", sql);
-    NSLog(@"%d", createRowId);
+    //int createRowId = [db lastInsertRowId];
+    //NSLog(@"%@", sql);
+    //NSLog(@"%d", createRowId);
     [db close];
 }
 
