@@ -21,7 +21,9 @@
     //WordIndexViewController *ivc = [[WordIndexViewController alloc] initWithNibName:nil bundle:nil];
     UIViewController *ivc = [[WordIndexPageViewController alloc] initWithBookId:1];
     UINavigationController *naviController = [[UINavigationController alloc] initWithRootViewController:ivc];
-     
+    
+    UIApplication *app = [UIApplication sharedApplication];
+    app.statusBarStyle = UIStatusBarStyleBlackOpaque;
     self.window.rootViewController = naviController;
     
     [self.window makeKeyAndVisible];    

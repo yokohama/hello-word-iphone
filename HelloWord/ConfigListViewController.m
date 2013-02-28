@@ -24,12 +24,9 @@
 {
     [super viewDidLoad];
     
-    
     //navibar
     //TODO:タイトルをセットする。戻るボタンではなく完了ボタンにする。黒くする。
     [self.navigationController setNavigationBarHidden:NO];
-    
-    //背景スタイル
 }
 
 - (void)didReceiveMemoryWarning

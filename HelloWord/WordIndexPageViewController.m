@@ -168,6 +168,7 @@
 - (void)config{
     ConfigListViewController *cvc = [[ConfigListViewController alloc] initWithStyle:UITableViewStyleGrouped];
     [self.navigationController pushViewController:cvc animated:YES];
+    //[self presentViewController: cvc animated:YES completion: nil];
 }
 
 - (void)tabBookTitle: (UITapGestureRecognizer *)sender{

@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>API URL</key>
-	<string>http://localhost:3000</string>
+	<string>http://hello-word.herokuapp.com</string>
 </dict>
 </plist>
