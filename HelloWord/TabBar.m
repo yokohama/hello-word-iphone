@@ -45,20 +45,41 @@
         label.backgroundColor = [UIColor redColor];
         self.currentLabel.backgroundColor = [UIColor grayColor];
     }
-    self.currentLabel = label;
-    
-    float zoom = 0;
+
+    CGRect rect = CGRectMake(0, 0, 0, 0);
+    int currentIndex = 0;
+    int labelIndex = 0;
     for (int i=0; i<[labels count]; i++) {
-        UILabel *l = labels[i];
-        zoom += (l.frame.size.width);
-        if (l.tag == self.currentLabel.tag) {
+        if ([labels[i] tag] == currentLabel.tag) {
+            currentIndex = i;
             break;
         }
     }
-
-    //NSLog(@"%f", zoom);
-    CGRect rect = CGRectMake(zoom+40, 0, 100, 100);
+    for (int i=0; i<[labels count]; i++) {
+        if ([labels[i] tag] == label.tag) {
+            labelIndex = i;
+            break;
+        }
+    }
+    
+    float center = self.frame.size.width / 2;
+    if (currentIndex < labelIndex) {
+        int last = [labels count] - 1;
+        if (label.tag == [labels[last] tag]) {
+            rect = CGRectMake(label.frame.origin.x, 0, TAB_WIDTH_SIZE, 100);
+        } else {
+            rect = CGRectMake((label.frame.origin.x + TAB_WIDTH_SIZE + 80), 0, 40, 100);
+        }
+    } else {
+        if (label.frame.origin.x < center) {
+            rect = CGRectMake(0, 0, TAB_WIDTH_SIZE, 100);
+        } else {
+            rect = CGRectMake(label.frame.origin.x-120, 0, 40, 100);
+        }
+    }
     [self scrollRectToVisible:rect animated:YES];
+    
+    self.currentLabel = label;
 }
 
 -(void)rehash:(NSMutableArray *)books {

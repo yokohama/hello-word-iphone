@@ -30,4 +30,6 @@
 - (id)initWithBookId :(int)_bookId;
 - (void)setWordListViewController :(int)_bookId;
 
+- (void)rehash;
+
 @end

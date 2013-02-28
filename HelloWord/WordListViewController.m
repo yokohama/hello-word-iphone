@@ -41,11 +41,9 @@
     [header addSubview:count];
     self.tableView.tableHeaderView = header;
     
-    /*
     UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, (0- REFRESH_VIEW_HEIGHT), self.view.frame.size.width, REFRESH_VIEW_HEIGHT)];
     refreshView.backgroundColor = [UIColor purpleColor];
     [self.view addSubview:refreshView];
-     */
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,7 +99,6 @@
     return cell;
 }
 
-/*
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     return;
@@ -171,8 +168,11 @@
         records = [wm findByBookId:bookId];
         [self.tableView reloadData];
         
-        NSMutableArray *newBookRecords = [[[BookModel alloc]init] findAll];
-        [tabBar rehash:newBookRecords];
+        //NSMutableArray *newBookRecords = [[[BookModel alloc]init] findAll];
+        //[tabBar rehash:newBookRecords];
+        
+        SEL method = @selector(rehash);
+        [invorkedController performSelector:method];
     }
 }
 
@@ -191,9 +191,6 @@
                           otherButtonTitles:nil];
     [alert show];
 }
- */
-
-
 
 @end
 

@@ -178,93 +178,15 @@
     [tabBar changeLabel:label];
 }
 
-#pragma mark - UIScrollViewDelegate
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    return;
+- (void)rehash {
+    NSMutableArray *newBookRecords = [[[BookModel alloc]init] findAll];
+    [tabBar rehash:newBookRecords];
+    UILabel *label = tabBar.labels[0];
+    bookId = label.tag;
+    [self makePageView:CGRectMake(0, 0, pageArea.frame.size.width, pageArea.frame.size.height)];
+    [pageArea addSubview:pageViewController.view];
+    [tabBar changeLabel:label];
 }
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    float y = scrollView.contentOffset.y;
-    if (y < (-50.0)) {
-        ConfigModel *cm = [[ConfigModel alloc]init];
-        if ([cm isRegisted]) {
-            
-            NSString *path = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"plist"];
-            NSDictionary *plist = [NSDictionary dictionaryWithContentsOfFile:path];
-            NSString *urlstr = [[NSString alloc] initWithFormat:@"%@/api/books", [plist objectForKey:@"API URL"]];
-            
-            NSString *postData = [[NSString alloc] initWithFormat:@"user[email]=%@&user[password]=%@", cm.email, cm.password];
-            NSURL *url = [NSURL URLWithString:urlstr];
-            
-            NSLog(@"%@", urlstr);
-            
-            NSData *myRequestData = [postData dataUsingEncoding:NSUTF8StringEncoding];
-            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: url];
-            [request setHTTPMethod: @"POST"];
-            [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
-            [request setHTTPBody: myRequestData];
-            
-            //TODO:戻り値使わないのに、変数に格納しないとワーニング。どういうこと？
-            [[NSURLConnection alloc] initWithRequest:request delegate:self];
-        } else {
-            UIAlertView *alert = [[UIAlertView alloc]
-                                  initWithTitle:@"Error"
-                                  message:@"サーバーから単語帳を取得するには、設定から認証をおこなってください。"
-                                  delegate:self
-                                  cancelButtonTitle:@"OK"
-                                  otherButtonTitles:nil];
-            [alert show];
-        }
-    }
-    return;
-}
-
-//ダウンロード完了時の処理
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    SBJsonParser *parser = [[SBJsonParser alloc] init];
-    NSDictionary *jsonDic = [parser objectWithData: data];
-    //NSLog(@"JSON dictionary=%@", [jsonDic description]);
-    NSMutableArray *jBooks = [jsonDic objectForKey:@"books"];
-    NSMutableArray *newBooks = [NSMutableArray array];
-    for (int i=0; i<[jBooks count]; i++) {
-        BookModel *bm = [[BookModel alloc]init];
-        bm.title = [jBooks[i] objectForKey:@"title"];
-        
-        NSMutableArray *arrayWords = [jBooks[i] objectForKey:@"words"];
-        for (int iw=0; iw<[arrayWords count]; iw++) {
-            NSDictionary *word = arrayWords[iw];
-            WordModel *wm = [[WordModel alloc] initWithValues:[word objectForKey:@"word"] answer:[word objectForKey:@"answer"]];
-            //NSLog(@"%@", wm.word);
-            [bm.words addObject:wm];
-        }
-        [newBooks addObject:bm];
-    }
-    
-    if ([newBooks count] > 0) {
-        [[[BookModel alloc]init] rehash:newBooks];
-        bookId = 1;
-        [self makePageView:CGRectMake(0, 0, pageArea.frame.size.width, pageArea.frame.size.height)];
-        [pageArea addSubview:pageViewController.view];
-        [tabBar changeLabel:tabBar.labels[0]];
-    }
-}
-
-//通信完了時の処理
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"hoge3");
-}
-
-//通信エラー処理
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle:@"Error"
-                          message:@"サーバーに接続ができませんでした。"
-                          delegate:self
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil];
-    [alert show];
-}
-
 
 @end
 
