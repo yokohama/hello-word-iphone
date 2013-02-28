@@ -21,6 +21,7 @@
     
     NSMutableArray *records;
     int bookId;
+    NSMutableArray *newBooks;
     UILabel *count;
     TabBar *tabBar;
     

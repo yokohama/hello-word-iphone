@@ -70,23 +70,11 @@
     answer.editable = NO;
     answer.font =[UIFont systemFontOfSize:16.0];
     [board addSubview:answer];
-
     
-    [self.navigationController setToolbarHidden:YES animated:YES];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    
-    self.navigationController.toolbar.tintColor = [UIColor blackColor];
-    
-    UIBarButtonItem *spacer = [[UIBarButtonItem alloc]
-                               initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                               target:nil action:nil];
-    
-    UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(edit)];
-    UIBarButtonItem *destroy = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(destroy)];
-    
-    NSArray *items =
-    [NSArray arrayWithObjects:spacer, edit, spacer, destroy, spacer, nil];
-    self.toolbarItems = items;
+    //シングルタップ
+    //TODO:上から下へのスクロールにする
+    UITapGestureRecognizer *singleFingerDTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [self.view addGestureRecognizer:singleFingerDTap];
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,6 +113,10 @@
             [self.navigationController popViewControllerAnimated:YES];
             break;
     }
+}
+
+- (void)handleSingleTap:(UIGestureRecognizer *)sender {
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

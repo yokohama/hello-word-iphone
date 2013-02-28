@@ -41,7 +41,10 @@
 }
 
 -(void)changeLabel :(UILabel *)label{
-    if (self.currentLabel.tag != label.tag) {
+    if (self.currentLabel.tag == label.tag) {
+        [self scroll:label];
+        currentLabel = label;
+    } else {
         int newLabelIndex = 0;
         for (int i=0; i<[labels count]; i++) {
             if ([labels[i] tag] == label.tag) {newLabelIndex = i;}
@@ -67,40 +70,50 @@
         [scrollArea addSubview:newLabel];
         [scrollArea addSubview:oldLabel];
 
-        CGRect rect = CGRectMake(0, 0, 0, 0);
-        int currentIndex = 0;
-        int labelIndex = 0;
-        for (int i=0; i<[labels count]; i++) {
-            if ([labels[i] tag] == currentLabel.tag) {
-                currentIndex = i;
-                break;
-            }
-        }
-        for (int i=0; i<[labels count]; i++) {
-            if ([labels[i] tag] == newLabel.tag) {
-                labelIndex = i;
-                break;
-            }
-        }
-    
-        float center = self.frame.size.width / 2;
-        if (currentIndex < labelIndex) {
-            int last = [labels count] - 1;
-            if (newLabel.tag == [labels[last] tag]) {
-                rect = CGRectMake(newLabel.frame.origin.x, 0, TAB_WIDTH_SIZE, 100);
-            } else {
-                rect = CGRectMake((newLabel.frame.origin.x + TAB_WIDTH_SIZE + 80), 0, 40, 100);
-            }
-        } else {
-            if (newLabel.frame.origin.x < center) {
-                rect = CGRectMake(0, 0, TAB_WIDTH_SIZE, 100);
-            } else {
-                rect = CGRectMake(newLabel.frame.origin.x-120, 0, 40, 100);
-            }
-        }
-        [self scrollRectToVisible:rect animated:YES];
+        [self scroll:newLabel];
         currentLabel = newLabel;
     }
+}
+
+-(void)scroll :(UILabel *)label {
+    CGRect rect = CGRectMake(0, 0, 0, 0);
+    int currentIndex = 0;
+    int labelIndex = 0;
+    for (int i=0; i<[labels count]; i++) {
+        if ([labels[i] tag] == currentLabel.tag) {
+            currentIndex = i;
+            break;
+        }
+    }
+    for (int i=0; i<[labels count]; i++) {
+        if ([labels[i] tag] == label.tag) {
+            labelIndex = i;
+            break;
+        }
+    }
+    
+    //TODO:微妙に動いていないので修正
+    /*
+    CGPoint offset = self.contentOffset;
+    float f = label.frame.origin.x - offset.x;
+    NSLog(@"%f", offset.x);
+    */
+    float center = self.frame.size.width / 2;
+    if (currentIndex < labelIndex) {
+        int last = [labels count] - 1;
+        if (label.tag == [labels[last] tag]) {
+            rect = CGRectMake(label.frame.origin.x, 0, TAB_WIDTH_SIZE, 100);
+        } else {
+            rect = CGRectMake((label.frame.origin.x + TAB_WIDTH_SIZE + 80), 0, 40, 100);
+        }
+    } else {
+        if (label.frame.origin.x < center) {
+            rect = CGRectMake(0, 0, TAB_WIDTH_SIZE, 100);
+        } else {
+            rect = CGRectMake(label.frame.origin.x-120, 0, 40, 100);
+        }
+    }
+    [self scrollRectToVisible:rect animated:YES];
 }
 
 -(void)rehash:(NSMutableArray *)books {

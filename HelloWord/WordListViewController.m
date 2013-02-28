@@ -70,7 +70,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WordShowViewController *next = [[WordShowViewController alloc] initWithWordModel:records[indexPath.row]];
-    [invorkedController.navigationController pushViewController:next animated:YES];
+    //[invorkedController.navigationController pushViewController:next animated:YES];
+    [self presentViewController: next animated:YES completion: nil];
 }
 
 #pragma mark - Table view data source
@@ -146,7 +147,7 @@
     NSDictionary *jsonDic = [parser objectWithData: data];
     //NSLog(@"JSON dictionary=%@", [jsonDic description]);
     NSMutableArray *books = [jsonDic objectForKey:@"books"];
-    NSMutableArray *newBooks = [NSMutableArray array];
+    newBooks = [NSMutableArray array];
     for (int i=0; i<[books count]; i++) {
         BookModel *bm = [[BookModel alloc]init];
         bm.title = [books[i] objectForKey:@"title"];
@@ -160,7 +161,11 @@
         }
         [newBooks addObject:bm];
     }
-    
+}
+
+//通信完了時の処理
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"hoge3");
     if ([newBooks count] > 0) {
         [[[BookModel alloc]init] rehash:newBooks];
         
@@ -168,17 +173,10 @@
         records = [wm findByBookId:bookId];
         [self.tableView reloadData];
         
-        //NSMutableArray *newBookRecords = [[[BookModel alloc]init] findAll];
-        //[tabBar rehash:newBookRecords];
-        
-        SEL method = @selector(rehash);
-        [invorkedController performSelector:method];
+        if ([invorkedController respondsToSelector:@selector(rehash)]) {
+            [invorkedController performSelector:@selector(rehash)];
+        }
     }
-}
-
-//通信完了時の処理
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"hoge3");
 }
 
 //通信エラー処理

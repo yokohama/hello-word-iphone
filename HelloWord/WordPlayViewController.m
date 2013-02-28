@@ -60,7 +60,7 @@
     
     [pageArea addSubview:pageViewController.view];
     
-    playBarArea = [[UIView alloc] initWithFrame:CGRectMake(0, 380, self.view.frame.size.width, 40)];
+    playBarArea = [[UIView alloc] initWithFrame:CGRectMake(0, 420, self.view.frame.size.width, 40)];
     playBarArea.backgroundColor = [UIColor grayColor];
     playBarArea.layer.shadowOpacity = 0.4;
     playBarArea.layer.shadowOffset = CGSizeMake(0.0, -2.0);
@@ -73,6 +73,12 @@
     slider.value = 0;
     [slider addTarget:self action:@selector(sliderShift:) forControlEvents:UIControlEventValueChanged];
     [playBarArea addSubview:slider];
+    
+    UIImage *img = [UIImage imageNamed:@"close.png"];
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-26, 10, 16, 16)];
+    [btn addTarget:self action:@selector(return:) forControlEvents:UIControlEventTouchDown];
+    [btn setBackgroundImage:img forState:UIControlStateNormal];
+    [self.view addSubview:btn];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -127,6 +133,10 @@
 - (int)getPageIndex:(WordTicketViewController*)vc
 {
     return vc.pageIndex;
+}
+
+-(void)return:(UIButton*)button{
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void)sliderShift :(id)sender {

@@ -13,6 +13,7 @@
 		8518F63116DC6F1B00F6685D /* WordListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8518F63016DC6F1B00F6685D /* WordListViewController.m */; };
 		8518F63716DC868D00F6685D /* WordIndexPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8518F63616DC868D00F6685D /* WordIndexPageViewController.m */; };
 		8518F63A16DCFFEB00F6685D /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8518F63916DCFFEB00F6685D /* TabBar.m */; };
+		8518F63D16DF971F00F6685D /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 8518F63C16DF971F00F6685D /* close.png */; };
 		85213C6316BE95760007D484 /* WordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 85213C6216BE95760007D484 /* WordModel.m */; };
 		85213C6916BEA6370007D484 /* Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 85213C6816BEA6370007D484 /* Validation.m */; };
 		85213C8016C2B37D0007D484 /* WordEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85213C7F16C2B37D0007D484 /* WordEditViewController.m */; };
@@ -89,6 +90,7 @@
 		8518F63616DC868D00F6685D /* WordIndexPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordIndexPageViewController.m; sourceTree = "<group>"; };
 		8518F63816DCFFEB00F6685D /* TabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBar.h; sourceTree = "<group>"; };
 		8518F63916DCFFEB00F6685D /* TabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBar.m; sourceTree = "<group>"; };
+		8518F63C16DF971F00F6685D /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		85213C6116BE95760007D484 /* WordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordModel.h; sourceTree = "<group>"; };
 		85213C6216BE95760007D484 /* WordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordModel.m; sourceTree = "<group>"; };
 		85213C6716BEA6370007D484 /* Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Validation.h; sourceTree = "<group>"; };
@@ -210,6 +212,14 @@
 				8518F61E16DB45F000F6685D /* memo.strings */,
 			);
 			name = config;
+			sourceTree = "<group>";
+		};
+		8518F63B16DF96FA00F6685D /* icon */ = {
+			isa = PBXGroup;
+			children = (
+				8518F63C16DF971F00F6685D /* close.png */,
+			);
+			name = icon;
 			sourceTree = "<group>";
 		};
 		85213C8216C2C3910007D484 /* word */ = {
@@ -347,6 +357,7 @@
 		85B2430B16D1FFDA007C0553 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				8518F63B16DF96FA00F6685D /* icon */,
 				85B2430C16D20004007C0553 /* hello_word.db */,
 			);
 			name = resources;
@@ -529,6 +540,7 @@
 				85B2434316D66804007C0553 /* RegenerateCredits in Resources */,
 				8518F61D16DB446000F6685D /* config.plist in Resources */,
 				8518F61F16DB45F000F6685D /* memo.strings in Resources */,
+				8518F63D16DF971F00F6685D /* close.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

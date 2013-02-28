@@ -161,7 +161,8 @@
     } else {
         WordPlayViewController *pvc = [[WordPlayViewController alloc] initWithNibName:nil bundle:nil];
         pvc.records = words;
-        [self.navigationController pushViewController:pvc animated:YES];
+        //[self.navigationController pushViewController:pvc animated:YES];
+        [self presentViewController: pvc animated:YES completion: nil];
     }
 }
 

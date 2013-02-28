@@ -18,13 +18,13 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    //WordIndexViewController *ivc = [[WordIndexViewController alloc] initWithNibName:nil bundle:nil];
     UIViewController *ivc = [[WordIndexPageViewController alloc] initWithBookId:1];
     UINavigationController *naviController = [[UINavigationController alloc] initWithRootViewController:ivc];
     
     UIApplication *app = [UIApplication sharedApplication];
     app.statusBarStyle = UIStatusBarStyleBlackOpaque;
     self.window.rootViewController = naviController;
+    //self.window.rootViewController = ivc;
     
     [self.window makeKeyAndVisible];    
     return YES;
