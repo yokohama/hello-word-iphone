@@ -19,12 +19,13 @@
     ConfigModel *cm = [[ConfigModel alloc] init];
     if ([cm isRegisted]) {
         [cm unRegist];
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
     } else {
         if (indexPath.section == 1) {
             NSString *postData = [[NSString alloc] initWithFormat:@"user[email]=%@&user[password]=%@", emailTf.text, passwordTf.text];
-            NSString *urlstr = @"http://hello-word.herokuapp.com/api/users/sign_in_by_mobile";
-            //NSString *urlstr = @"http://localhost:3000/api/users/sign_in_by_mobile";
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"plist"];
+            NSDictionary *plist = [NSDictionary dictionaryWithContentsOfFile:path];
+            NSString *urlstr = [[NSString alloc] initWithFormat:@"%@/api/users/sign_in_by_mobile", [plist objectForKey:@"API URL"]];
             NSURL *url = [NSURL URLWithString:urlstr];
             
             NSData *myRequestData = [postData dataUsingEncoding:NSUTF8StringEncoding];
@@ -139,7 +140,7 @@
         cm.email = emailTf.text;
         cm.password = passwordTf.text;
         [cm regist];
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
     } else {
         UIAlertView *alert = [[UIAlertView alloc]
                  initWithTitle:@"Error"

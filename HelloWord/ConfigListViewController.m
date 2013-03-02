@@ -24,6 +24,12 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    //UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(hoge:)];
+    
+    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithTitle:@"完了" style:UIBarButtonItemStyleBordered target:self action:@selector(close)];
+    self.navigationItem.leftBarButtonItem = btn;
+    
     //navibar
     //TODO:タイトルをセットする。戻るボタンではなく完了ボタンにする。黒くする。
     [self.navigationController setNavigationBarHidden:NO];
@@ -89,6 +95,10 @@
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
     return cell;
+}
+
+- (void)close {
+        [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 

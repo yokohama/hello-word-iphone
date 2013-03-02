@@ -104,4 +104,12 @@
     }
 }
 
+-(void)dropTable {
+    NSString *sql = BOOK_DROP_SQL;
+    [db open];
+    [db executeUpdate:sql];
+    NSLog(sql);
+    [db close];
+}
+
 @end

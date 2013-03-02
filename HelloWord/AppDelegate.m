@@ -19,12 +19,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     UIViewController *ivc = [[WordIndexPageViewController alloc] initWithBookId:1];
-    UINavigationController *naviController = [[UINavigationController alloc] initWithRootViewController:ivc];
+    //UINavigationController *naviController = [[UINavigationController alloc] initWithRootViewController:ivc];
     
     UIApplication *app = [UIApplication sharedApplication];
     app.statusBarStyle = UIStatusBarStyleBlackOpaque;
-    self.window.rootViewController = naviController;
-    //self.window.rootViewController = ivc;
+    //self.window.rootViewController = naviController;
+    self.window.rootViewController = ivc;
     
     [self.window makeKeyAndVisible];    
     return YES;

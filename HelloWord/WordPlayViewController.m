@@ -61,9 +61,11 @@
     [pageArea addSubview:pageViewController.view];
     
     playBarArea = [[UIView alloc] initWithFrame:CGRectMake(0, 420, self.view.frame.size.width, 40)];
-    playBarArea.backgroundColor = [UIColor grayColor];
+    //playBarArea.backgroundColor = [UIColor grayColor];
     playBarArea.layer.shadowOpacity = 0.4;
     playBarArea.layer.shadowOffset = CGSizeMake(0.0, -2.0);
+    UIImage *playAreaImage = [UIImage imageNamed:@"playarea.png"];
+    playBarArea.backgroundColor = [UIColor colorWithPatternImage:playAreaImage];
     [self.view addSubview:playBarArea];
     
     CGRect rect = CGRectMake(10, 8, 300, 0);
@@ -75,7 +77,7 @@
     [playBarArea addSubview:slider];
     
     UIImage *img = [UIImage imageNamed:@"close.png"];
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-26, 10, 16, 16)];
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-42, 10, 32, 32)];
     [btn addTarget:self action:@selector(return:) forControlEvents:UIControlEventTouchDown];
     [btn setBackgroundImage:img forState:UIControlStateNormal];
     [self.view addSubview:btn];

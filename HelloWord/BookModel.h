@@ -14,6 +14,7 @@
     NSMutableArray *words;
 }
 
+#define BOOK_DROP_SQL @"DROP TABLE books";
 #define BOOK_CREATE_SQL @"CREATE TABLE IF NOT EXISTS books (id INTEGER PRIMARY KEY, title TEXT);"
 
 @property(readwrite) int recodeId;
@@ -27,5 +28,6 @@
 -(void)destroy;
 -(int)create;
 -(void)rehash :(NSMutableArray *)books;
+-(void)dropTable;
 
 @end

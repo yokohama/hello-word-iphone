@@ -38,13 +38,14 @@
     CGFloat h = r.size.height;
     
     UILabel *wl = [[UILabel alloc] init];
-    wl.frame = CGRectMake(10, h/2-80, self.view.frame.size.width-10, 50);
+    wl.frame = CGRectMake(10, h/2-80, self.view.frame.size.width-10, 80);
     wl.text = word;
     wl.font =[UIFont systemFontOfSize:30.0];
     wl.textAlignment = NSTextAlignmentCenter;
+    wl.numberOfLines = 0;
     [self.view addSubview:wl];
     
-    al = [[UITextView alloc] initWithFrame:CGRectMake(10, 30, self.view.frame.size.width-10, 50)];
+    al = [[UITextView alloc] initWithFrame:CGRectMake(10, 30, self.view.frame.size.width-10, 400)];
     al.editable = NO;
     al.font =[UIFont systemFontOfSize:16.0];
     al.text = answer;
@@ -59,7 +60,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 //現在のページを保持させる

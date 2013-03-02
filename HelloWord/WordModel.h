@@ -17,6 +17,7 @@
     NSString *word, *answer;
 }
 
+#define WORD_DROP_SQL @"DROP TABLE words";
 #define WORD_CREATE_SQL @"CREATE TABLE IF NOT EXISTS words (id INTEGER PRIMARY KEY, book_id INT, word TEXT, answer TEXT);"
 
 @property(readwrite) int recodeId, bookId;
@@ -34,5 +35,6 @@
 -(NSMutableArray *)findAll;
 -(NSMutableArray *)findByBookId :(int)_bookId;
 -(void)destroy;
+-(void)dropTable;
 
 @end

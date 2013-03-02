@@ -7,13 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8518F61D16DB446000F6685D /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8518F61C16DB446000F6685D /* config.plist */; };
 		8518F61F16DB45F000F6685D /* memo.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8518F61E16DB45F000F6685D /* memo.strings */; };
 		8518F62516DC5A3600F6685D /* TabScrollAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8518F62416DC5A3600F6685D /* TabScrollAreaView.m */; };
 		8518F63116DC6F1B00F6685D /* WordListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8518F63016DC6F1B00F6685D /* WordListViewController.m */; };
 		8518F63716DC868D00F6685D /* WordIndexPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8518F63616DC868D00F6685D /* WordIndexPageViewController.m */; };
 		8518F63A16DCFFEB00F6685D /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8518F63916DCFFEB00F6685D /* TabBar.m */; };
-		8518F63D16DF971F00F6685D /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 8518F63C16DF971F00F6685D /* close.png */; };
+		8518F63F16DF9ED100F6685D /* noimage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8518F63E16DF9ED100F6685D /* noimage.jpg */; };
+		8518F64316DFB0A600F6685D /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 8518F64216DFB0A600F6685D /* play.png */; };
+		8518F64616DFB27400F6685D /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8518F64516DFB27400F6685D /* HeaderView.m */; };
+		8518F65016DFCAC500F6685D /* config2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8518F64F16DFCAC500F6685D /* config2.png */; };
+		8518F65416DFE46600F6685D /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 8518F65316DFE46600F6685D /* close.png */; };
+		8518F65816DFF42C00F6685D /* library.png in Resources */ = {isa = PBXBuildFile; fileRef = 8518F65716DFF42C00F6685D /* library.png */; };
+		8518F65A16E0851000F6685D /* playarea.png in Resources */ = {isa = PBXBuildFile; fileRef = 8518F65916E0851000F6685D /* playarea.png */; };
 		85213C6316BE95760007D484 /* WordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 85213C6216BE95760007D484 /* WordModel.m */; };
 		85213C6916BEA6370007D484 /* Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 85213C6816BEA6370007D484 /* Validation.m */; };
 		85213C8016C2B37D0007D484 /* WordEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85213C7F16C2B37D0007D484 /* WordEditViewController.m */; };
@@ -90,7 +95,14 @@
 		8518F63616DC868D00F6685D /* WordIndexPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordIndexPageViewController.m; sourceTree = "<group>"; };
 		8518F63816DCFFEB00F6685D /* TabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBar.h; sourceTree = "<group>"; };
 		8518F63916DCFFEB00F6685D /* TabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBar.m; sourceTree = "<group>"; };
-		8518F63C16DF971F00F6685D /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		8518F63E16DF9ED100F6685D /* noimage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = noimage.jpg; sourceTree = "<group>"; };
+		8518F64216DFB0A600F6685D /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		8518F64416DFB27400F6685D /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		8518F64516DFB27400F6685D /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
+		8518F64F16DFCAC500F6685D /* config2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = config2.png; sourceTree = "<group>"; };
+		8518F65316DFE46600F6685D /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		8518F65716DFF42C00F6685D /* library.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = library.png; sourceTree = "<group>"; };
+		8518F65916E0851000F6685D /* playarea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playarea.png; sourceTree = "<group>"; };
 		85213C6116BE95760007D484 /* WordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordModel.h; sourceTree = "<group>"; };
 		85213C6216BE95760007D484 /* WordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordModel.m; sourceTree = "<group>"; };
 		85213C6716BEA6370007D484 /* Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Validation.h; sourceTree = "<group>"; };
@@ -217,7 +229,12 @@
 		8518F63B16DF96FA00F6685D /* icon */ = {
 			isa = PBXGroup;
 			children = (
-				8518F63C16DF971F00F6685D /* close.png */,
+				8518F65916E0851000F6685D /* playarea.png */,
+				8518F65716DFF42C00F6685D /* library.png */,
+				8518F64F16DFCAC500F6685D /* config2.png */,
+				8518F65316DFE46600F6685D /* close.png */,
+				8518F64216DFB0A600F6685D /* play.png */,
+				8518F63E16DF9ED100F6685D /* noimage.jpg */,
 			);
 			name = icon;
 			sourceTree = "<group>";
@@ -453,6 +470,8 @@
 				8518F62416DC5A3600F6685D /* TabScrollAreaView.m */,
 				8518F63816DCFFEB00F6685D /* TabBar.h */,
 				8518F63916DCFFEB00F6685D /* TabBar.m */,
+				8518F64416DFB27400F6685D /* HeaderView.h */,
+				8518F64516DFB27400F6685D /* HeaderView.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -538,9 +557,13 @@
 				85B2433E16D667FD007C0553 /* AppledocSettings.plist in Resources */,
 				85B2434216D66804007C0553 /* RegenerateApiDocumentation in Resources */,
 				85B2434316D66804007C0553 /* RegenerateCredits in Resources */,
-				8518F61D16DB446000F6685D /* config.plist in Resources */,
 				8518F61F16DB45F000F6685D /* memo.strings in Resources */,
-				8518F63D16DF971F00F6685D /* close.png in Resources */,
+				8518F63F16DF9ED100F6685D /* noimage.jpg in Resources */,
+				8518F64316DFB0A600F6685D /* play.png in Resources */,
+				8518F65016DFCAC500F6685D /* config2.png in Resources */,
+				8518F65416DFE46600F6685D /* close.png in Resources */,
+				8518F65816DFF42C00F6685D /* library.png in Resources */,
+				8518F65A16E0851000F6685D /* playarea.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,6 +632,7 @@
 				8518F63116DC6F1B00F6685D /* WordListViewController.m in Sources */,
 				8518F63716DC868D00F6685D /* WordIndexPageViewController.m in Sources */,
 				8518F63A16DCFFEB00F6685D /* TabBar.m in Sources */,
+				8518F64616DFB27400F6685D /* HeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

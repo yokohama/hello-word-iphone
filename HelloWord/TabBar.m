@@ -8,6 +8,13 @@
 
 #import "TabBar.h"
 
+/*BUG:yokohama
+１）タブの一番最後のタブを選択する。
+２）ブラウザから一番最後の選択されているタブを削除する
+３）iPhoneでリフレッシュする
+＝＞削除されたはずのタブがnullで残っている。落ちはしない。
+*/
+
 #define TAB_WIDTH_SIZE 80
 #define TAB_SPACER_SIZE 0
 
@@ -20,9 +27,11 @@
     self = [super initWithFrame:frame];
     if (self) {
         labels = [NSMutableArray array];
+        
         delegateController = controller;
         
-        self.backgroundColor = [UIColor blackColor];
+        UIImage *tabBackgroundImage = [UIImage imageNamed:@"playarea.png"];
+        self.backgroundColor = [UIColor colorWithPatternImage:tabBackgroundImage];
         
         NSMutableArray *books = [[[BookModel alloc]init] findAll];
         [self makeTabs:books];
@@ -41,38 +50,36 @@
 }
 
 -(void)changeLabel :(UILabel *)label{
-    if (self.currentLabel.tag == label.tag) {
-        [self scroll:label];
-        currentLabel = label;
-    } else {
-        int newLabelIndex = 0;
-        for (int i=0; i<[labels count]; i++) {
-            if ([labels[i] tag] == label.tag) {newLabelIndex = i;}
-        }
-        int oldLabelIndex = 0;
-        for (int i=0; i<[labels count]; i++) {
-            if ([labels[i] tag] == currentLabel.tag) {oldLabelIndex = i;}
-        }
-        
-        BookModel *newBook = [[[BookModel alloc]init] find:label.tag];
-        BookModel *oldBook = [[[BookModel alloc]init] find:currentLabel.tag];
-        
-        UILabel *newLabel = [self makeTab:newBook :CGRectMake(label.frame.origin.x, 0, TAB_WIDTH_SIZE, 35)];
-        newLabel.backgroundColor = [UIColor redColor];
-        labels[newLabelIndex] = newLabel;
-        UILabel *oldLabel = [self makeTab:oldBook :CGRectMake(currentLabel.frame.origin.x, 4, TAB_WIDTH_SIZE, 31)];
-        oldLabel.backgroundColor = [UIColor grayColor];
-        labels[oldLabelIndex] = oldLabel;
-        
-        [label removeFromSuperview];
-        [currentLabel removeFromSuperview];
-        
-        [scrollArea addSubview:newLabel];
-        [scrollArea addSubview:oldLabel];
-
-        [self scroll:newLabel];
-        currentLabel = newLabel;
+    int newLabelIndex = 0;
+    for (int i=0; i<[labels count]; i++) {
+        if ([labels[i] tag] == label.tag) {newLabelIndex = i;}
     }
+    int oldLabelIndex = 0;
+    for (int i=0; i<[labels count]; i++) {
+        if ([labels[i] tag] == currentLabel.tag) {oldLabelIndex = i;}
+    }
+    
+    BookModel *newBook = [[[BookModel alloc]init] find:label.tag];
+    BookModel *oldBook = [[[BookModel alloc]init] find:currentLabel.tag];
+    
+    UILabel *newLabel = [self makeTab:newBook :CGRectMake(label.frame.origin.x, 0, TAB_WIDTH_SIZE, 45)];
+    newLabel.backgroundColor = [UIColor redColor];
+    labels[newLabelIndex] = newLabel;
+    UILabel *oldLabel = [self makeTab:oldBook :CGRectMake(currentLabel.frame.origin.x, 4, TAB_WIDTH_SIZE, 40)];
+    UIColor *pink = [UIColor colorWithRed:1.0 green:0.9 blue:1.0 alpha:1.0];
+    oldLabel.backgroundColor = pink;
+    labels[oldLabelIndex] = oldLabel;
+    
+    [label removeFromSuperview];
+    [currentLabel removeFromSuperview];
+        
+    [scrollArea addSubview:newLabel];
+    if (self.currentLabel.tag != label.tag) {
+        [scrollArea addSubview:oldLabel];
+    }
+
+    [self scroll:newLabel];
+    currentLabel = newLabel;
 }
 
 -(void)scroll :(UILabel *)label {
@@ -93,11 +100,10 @@
     }
     
     //TODO:微妙に動いていないので修正
-    /*
-    CGPoint offset = self.contentOffset;
-    float f = label.frame.origin.x - offset.x;
-    NSLog(@"%f", offset.x);
-    */
+    //CGPoint offset = self.contentOffset;
+    //float f = label.frame.origin.x - offset.x;
+    //NSLog(@"%f", offset.x);
+    
     float center = self.frame.size.width / 2;
     if (currentIndex < labelIndex) {
         int last = [labels count] - 1;
@@ -142,18 +148,22 @@
         noBook.backgroundColor = [UIColor whiteColor];
         noBook.font = [UIFont fontWithName:@"AppleGothic" size:10];
         noBook.textAlignment = NSTextAlignmentCenter;
+        UIColor *pink = [UIColor colorWithRed:1.0 green:0.9 blue:1.0 alpha:1.0];
+        noBook.backgroundColor = pink;
         [scrollArea addSubview:noBook];
     } else {
         scrollArea = [[UIView alloc] initWithFrame:CGRectMake(0, 0, scrollAreaWidth-2, self.frame.size.height)];
         for (int i=0; i<[books count]; i++) {
             UILabel *label = nil;
             if (self.currentLabel == nil) {
-                label = [self makeTab:books[i] :CGRectMake((TAB_WIDTH_SIZE*i)+(TAB_SPACER_SIZE*i), 0, TAB_WIDTH_SIZE, 35)];
+                label = [self makeTab:books[i] :CGRectMake((TAB_WIDTH_SIZE*i)+(TAB_SPACER_SIZE*i), 0, TAB_WIDTH_SIZE, 45)];
                 label.backgroundColor = [UIColor redColor];
                 self.currentLabel = label;
             } else {
-                label = [self makeTab:books[i] :CGRectMake((TAB_WIDTH_SIZE*i)+(TAB_SPACER_SIZE*i), 4, TAB_WIDTH_SIZE, 31)];
-                label.backgroundColor = [UIColor grayColor];
+                label = [self makeTab:books[i] :CGRectMake((TAB_WIDTH_SIZE*i)+(TAB_SPACER_SIZE*i), 4, TAB_WIDTH_SIZE, 40)];
+                //label.backgroundColor = [UIColor grayColor];
+                UIColor *pink = [UIColor colorWithRed:1.0 green:0.9 blue:1.0 alpha:1.0];
+                label.backgroundColor = pink;
             }
             [scrollArea addSubview:label];
             [labels addObject:label];
@@ -164,14 +174,18 @@
     self.contentSize = scrollArea.bounds.size;
     self.showsHorizontalScrollIndicator = NO;
     
-    UILabel *line = nil;
+    UIView *line = nil;
     if (scrollAreaWidth < self.frame.size.width) {
         line = [[UILabel alloc] initWithFrame:CGRectMake(-300, 30, self.frame.size.width+500, 5)];
     } else {
         line = [[UILabel alloc] initWithFrame:CGRectMake(-300, 30, scrollAreaWidth+500, 5)];
     }
     [line setBackgroundColor:[UIColor redColor]];
-    [self addSubview:line];
+    
+    //TODO:影が反映しない
+    //line.layer.shadowOpacity = 1.0;
+    //line.layer.shadowOffset = CGSizeMake(0.0, 5.0);
+    //[self addSubview:line];
 }
 
 - (UILabel *)makeTab :(BookModel *)book :(CGRect)rect {
@@ -181,10 +195,10 @@
     label.layer.cornerRadius = 5;
     label.layer.shadowOpacity = 0.2;
     label.layer.shadowOffset = CGSizeMake(2.0, 4.0);
-    label.layer.borderWidth = 0.1;
+    label.layer.borderWidth = 0.2;
     label.layer.borderColor = [UIColor blackColor].CGColor;
     label.userInteractionEnabled = YES;
-    label.font = [UIFont fontWithName:@"AppleGothic" size:10];
+    label.font = [UIFont fontWithName:@"AppleGothic" size:12];
     label.numberOfLines = 0;
     label.tag = [book recodeId];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:delegateController action:@selector(tabBookTitle:)];
@@ -201,14 +215,5 @@
     }
     return result;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

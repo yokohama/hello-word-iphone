@@ -11,7 +11,7 @@
 #import "WordListViewController.h"
 #import "TabBar.h"
 #import "ConfigListViewController.h"
-#import "WordPlayViewController.h"
+#import "HeaderView.h"
 
 @interface WordIndexPageViewController : UIViewController <UIPageViewControllerDelegate,UIPageViewControllerDataSource>{
     UIScrollView *pageArea;
@@ -21,6 +21,8 @@
     TabBar *tabBar;
     int bookId;
     NSMutableArray *books;
+    
+    HeaderView *header;
     
     int pageIndex;
     int pageMax;

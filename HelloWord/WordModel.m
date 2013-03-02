@@ -147,4 +147,11 @@
     [db close];
 }
 
+-(void)dropTable {
+    NSString *sql = WORD_DROP_SQL;
+    [db open];
+    [db executeUpdate:sql];
+    [db close];
+}
+
 @end
