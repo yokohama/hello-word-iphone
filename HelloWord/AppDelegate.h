@@ -13,13 +13,13 @@
 @class ViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate> {
-    //Books *books;
+    Books *books;
 }
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) ViewController *viewController;
 
-//@property (nonatomic, strong, readwrite) Books *books;
+@property (nonatomic, strong, readwrite) Books *books;
 
 @end

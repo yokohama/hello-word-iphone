@@ -15,8 +15,6 @@
 		8518F63F16DF9ED100F6685D /* noimage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8518F63E16DF9ED100F6685D /* noimage.jpg */; };
 		8518F64316DFB0A600F6685D /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 8518F64216DFB0A600F6685D /* play.png */; };
 		8518F64616DFB27400F6685D /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8518F64516DFB27400F6685D /* HeaderView.m */; };
-		8518F65016DFCAC500F6685D /* config2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8518F64F16DFCAC500F6685D /* config2.png */; };
-		8518F65416DFE46600F6685D /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 8518F65316DFE46600F6685D /* close.png */; };
 		8518F65816DFF42C00F6685D /* library.png in Resources */ = {isa = PBXBuildFile; fileRef = 8518F65716DFF42C00F6685D /* library.png */; };
 		8518F65A16E0851000F6685D /* playarea.png in Resources */ = {isa = PBXBuildFile; fileRef = 8518F65916E0851000F6685D /* playarea.png */; };
 		85213C6316BE95760007D484 /* WordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 85213C6216BE95760007D484 /* WordModel.m */; };
@@ -73,6 +71,9 @@
 		85B2434316D66804007C0553 /* RegenerateCredits in Resources */ = {isa = PBXBuildFile; fileRef = 85B2434116D66804007C0553 /* RegenerateCredits */; };
 		85B2434616D6898D007C0553 /* BookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2434516D6898C007C0553 /* BookModel.m */; };
 		85BC395F16E3421A00F805EB /* Books.m in Sources */ = {isa = PBXBuildFile; fileRef = 85BC395E16E3421A00F805EB /* Books.m */; };
+		85BC396216E399E400F805EB /* RefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 85BC396116E399E400F805EB /* RefreshView.m */; };
+		85BC396416E39E5500F805EB /* config2.png in Resources */ = {isa = PBXBuildFile; fileRef = 85BC396316E39E5500F805EB /* config2.png */; };
+		85BC396616E39F2E00F805EB /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 85BC396516E39F2E00F805EB /* close.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,8 +101,6 @@
 		8518F64216DFB0A600F6685D /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		8518F64416DFB27400F6685D /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
 		8518F64516DFB27400F6685D /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
-		8518F64F16DFCAC500F6685D /* config2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = config2.png; sourceTree = "<group>"; };
-		8518F65316DFE46600F6685D /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		8518F65716DFF42C00F6685D /* library.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = library.png; sourceTree = "<group>"; };
 		8518F65916E0851000F6685D /* playarea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playarea.png; sourceTree = "<group>"; };
 		85213C6116BE95760007D484 /* WordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordModel.h; sourceTree = "<group>"; };
@@ -193,6 +192,10 @@
 		85B2434516D6898C007C0553 /* BookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookModel.m; sourceTree = "<group>"; };
 		85BC395D16E3421A00F805EB /* Books.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Books.h; sourceTree = "<group>"; };
 		85BC395E16E3421A00F805EB /* Books.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Books.m; sourceTree = "<group>"; };
+		85BC396016E399E400F805EB /* RefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshView.h; sourceTree = "<group>"; };
+		85BC396116E399E400F805EB /* RefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshView.m; sourceTree = "<group>"; };
+		85BC396316E39E5500F805EB /* config2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = config2.png; sourceTree = "<group>"; };
+		85BC396516E39F2E00F805EB /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,9 +237,9 @@
 			children = (
 				8518F65916E0851000F6685D /* playarea.png */,
 				8518F65716DFF42C00F6685D /* library.png */,
-				8518F64F16DFCAC500F6685D /* config2.png */,
-				8518F65316DFE46600F6685D /* close.png */,
+				85BC396516E39F2E00F805EB /* close.png */,
 				8518F64216DFB0A600F6685D /* play.png */,
+				85BC396316E39E5500F805EB /* config2.png */,
 				8518F63E16DF9ED100F6685D /* noimage.jpg */,
 			);
 			name = icon;
@@ -477,6 +480,8 @@
 				8518F63916DCFFEB00F6685D /* TabBar.m */,
 				8518F64416DFB27400F6685D /* HeaderView.h */,
 				8518F64516DFB27400F6685D /* HeaderView.m */,
+				85BC396016E399E400F805EB /* RefreshView.h */,
+				85BC396116E399E400F805EB /* RefreshView.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -565,10 +570,10 @@
 				8518F61F16DB45F000F6685D /* memo.strings in Resources */,
 				8518F63F16DF9ED100F6685D /* noimage.jpg in Resources */,
 				8518F64316DFB0A600F6685D /* play.png in Resources */,
-				8518F65016DFCAC500F6685D /* config2.png in Resources */,
-				8518F65416DFE46600F6685D /* close.png in Resources */,
 				8518F65816DFF42C00F6685D /* library.png in Resources */,
 				8518F65A16E0851000F6685D /* playarea.png in Resources */,
+				85BC396416E39E5500F805EB /* config2.png in Resources */,
+				85BC396616E39F2E00F805EB /* close.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,6 +644,7 @@
 				8518F63A16DCFFEB00F6685D /* TabBar.m in Sources */,
 				8518F64616DFB27400F6685D /* HeaderView.m in Sources */,
 				85BC395F16E3421A00F805EB /* Books.m in Sources */,
+				85BC396216E399E400F805EB /* RefreshView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

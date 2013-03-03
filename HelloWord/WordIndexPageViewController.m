@@ -14,8 +14,7 @@
     self = [super init];
     if (self) {
         bookId = _bookId;
-        BookModel *bm = [[BookModel alloc]init];
-        books = [bm findAll];
+        books = [Books factory];
     }
     
     //TODO:テーブル初期化（どこかに移動）
@@ -62,13 +61,16 @@
     [pageViewController removeFromParentViewController];
     
     //ページめくり
-    BookModel *bm = [[[BookModel alloc] init] find:bookId];
-    pageMax = [books count];
+    BookModel *bm = [books find:bookId];
+    pageMax = [books.items count];
     
-    for (int i=0; i<[books count]; i++) {
-        if ([books[i] recodeId] == bookId) {pageIndex = i+1;}
+    for (int i=0; i<[books.items count]; i++) {
+        if ([books.items[i] recodeId] == bookId) {
+            //NSLog(@"bookId=%d recodeId=%d", bookId, [books.items[i] recodeId]);
+            pageIndex = i+1;
+        }
     }
-    
+     
     [self setWordListViewController:bm.recodeId];
     NSArray *viewControllers = [NSArray arrayWithObject:wordListViewController];
     
@@ -97,12 +99,12 @@
 
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     pageIndex = [self getPageIndex:(WordListViewController *)viewController];
-    if (1 == pageIndex || [books count] == 0) {
+    if (1 == pageIndex || [books.items count] == 0) {
         return nil;
     }
     pageIndex--;
 
-    BookModel *bm = books[pageIndex-1];
+    BookModel *bm = books.items[pageIndex-1];
     bookId = bm.recodeId;
     
     [self setWordListViewController:bm.recodeId];
@@ -113,13 +115,13 @@
        viewControllerAfterViewController:(UIViewController *)viewController
 {
     pageIndex = [self getPageIndex:(WordListViewController *)viewController];
-    if (pageMax == pageIndex || [books count] == 0) {
+    if (pageMax == pageIndex || [books.items count] == 0) {
         return nil;
     }
     
     pageIndex++;
     
-    BookModel *bm = books[pageIndex-1];
+    BookModel *bm = books.items[pageIndex-1];
     bookId = bm.recodeId;
     
     [self setWordListViewController:bm.recodeId];
@@ -128,8 +130,8 @@
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed{
     if (completed) {
-        if ([books count] > 0) {
-            BookModel *bm = books[pageIndex-1];
+        if ([books.items count] > 0) {
+            BookModel *bm = books.items[pageIndex-1];
             [self setWordListViewController:bm.recodeId];
             wordListViewController = [previousViewControllers objectAtIndex:0];
             wordListViewController.pageIndex = pageIndex;
@@ -164,11 +166,8 @@
 }
 
 - (void)rehash {
-    NSMutableArray *newBookRecords = [[[BookModel alloc]init] findAll];
-    if ([newBookRecords count] > 0) {
-        [tabBar rehash:newBookRecords];
-        //pageMax == [newBookRecords count];
-        books = newBookRecords;
+    if ([books.items count] > 0) {
+        [tabBar rehash];
         UILabel *label = tabBar.labels[0];
         bookId = label.tag;
         [self makePageView:CGRectMake(0, 0, pageArea.frame.size.width, pageArea.frame.size.height)];
@@ -187,11 +186,8 @@
     [header addSubview:header.playButton];
     */
     
-    BookModel *bm = [[BookModel alloc] init];
-    bm = [bm find:bookId];
-    WordModel *wm = [[WordModel alloc] init];
-    NSMutableArray *words = [wm findByBookId:bm.recodeId];
-    if ([words count] == 0) {
+    BookModel *bm = [books find:bookId];
+    if ([bm.words count] == 0) {
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle:@"Error"
                               message:@"再生する単語がありません。下にスクロールしてデータを更新してください。"
@@ -201,7 +197,7 @@
         [alert show];
     } else {
         WordPlayViewController *pvc = [[WordPlayViewController alloc] initWithNibName:nil bundle:nil];
-        pvc.records = words;
+        pvc.records = bm.words;
         //[self.navigationController pushViewController:pvc animated:YES];
         [self presentViewController: pvc animated:YES completion: nil];
     }

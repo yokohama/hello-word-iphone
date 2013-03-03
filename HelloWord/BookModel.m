@@ -37,6 +37,7 @@
             recodeId = recordId;
         }
         title = [result stringForColumn:@"title"];
+        words = [[[WordModel alloc] init] findByBookId:recodeId];
     }
     [db close];
     
@@ -79,30 +80,6 @@
     [db close];
     
     return createRowId;
-}
-
--(void)rehash:(NSMutableArray *)books{
-    //現在のものを削除
-    NSMutableArray *_books = [[[BookModel alloc]init] findAll];
-    for (int i=0; i<[_books count]; i++){
-        BookModel *oldBook = (BookModel *)_books[i];
-        [oldBook destroy];
-    }
-    NSMutableArray *_words = [[[WordModel alloc]init] findAll];
-    for (int i=0; i<[_words count]; i++){
-        WordModel *oldWm = (WordModel *)_words[i];
-        [oldWm destroy];
-    }
-    
-    for (int i=0; i<[books count]; i++){
-        BookModel *book = (BookModel *)books[i];
-        int bookId = [book create];
-        for (int iw=0; iw<[book.words count]; iw++) {
-            WordModel *wm = book.words[iw];
-            wm.bookId = bookId;
-            [wm create];
-        }
-    }
 }
 
 -(void)dropTable {

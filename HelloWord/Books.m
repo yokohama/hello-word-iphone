@@ -8,16 +8,22 @@
 
 #import "Books.h"
 
+static Books *singleton;
+
 @implementation Books
 
 @synthesize items;
 
--(id)init{
-    self = [super init];
-    if (self) {
-        items = [[[BookModel alloc] init] findAll];
++(Books *)factory {
+    if (!singleton) {
+        [[Books alloc]init_singleton];
     }
-    return self;
+    return singleton;
+}
+
+-(void)init_singleton{
+    items = [[[BookModel alloc] init] findAll];
+    singleton = self;
 }
 
 -(BookModel *)find:(int)bookId {
@@ -27,6 +33,29 @@
         }
     }
     return nil;
+}
+
+-(void)rehash:(NSMutableArray *)newBooks{
+    //現在のものを削除
+    for (int i=0; i<[items count]; i++){
+        BookModel *oldBook = items[i];
+        for (int w=0; w<[oldBook.words count]; w++) {
+            WordModel *oldWm = oldBook.words[w];
+            [oldWm destroy];
+        }
+        [oldBook destroy];
+    }
+    
+    for (int i=0; i<[newBooks count]; i++){
+        BookModel *book = (BookModel *)newBooks[i];
+        int bookId = [book create];
+        for (int iw=0; iw<[book.words count]; iw++) {
+            WordModel *wm = book.words[iw];
+            wm.bookId = bookId;
+            [wm create];
+        }
+    }
+    items = [[[BookModel alloc]init]findAll];
 }
 
 @end

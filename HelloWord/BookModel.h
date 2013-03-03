@@ -28,7 +28,6 @@
 -(NSMutableArray *)findAll;
 -(void)destroy;
 -(int)create;
--(void)rehash :(NSMutableArray *)books;
 -(void)dropTable;
 
 @end

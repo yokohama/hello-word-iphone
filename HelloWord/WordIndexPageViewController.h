@@ -12,6 +12,7 @@
 #import "TabBar.h"
 #import "ConfigListViewController.h"
 #import "HeaderView.h"
+#import "Books.h"
 
 @interface WordIndexPageViewController : UIViewController <UIPageViewControllerDelegate,UIPageViewControllerDataSource>{
     UIScrollView *pageArea;
@@ -20,7 +21,8 @@
     
     TabBar *tabBar;
     int bookId;
-    NSMutableArray *books;
+    //NSMutableArray *books;
+    Books *books;
     
     HeaderView *header;
     

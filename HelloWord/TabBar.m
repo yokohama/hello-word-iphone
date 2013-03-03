@@ -33,8 +33,9 @@
         UIImage *tabBackgroundImage = [UIImage imageNamed:@"playarea.png"];
         self.backgroundColor = [UIColor colorWithPatternImage:tabBackgroundImage];
         
-        NSMutableArray *books = [[[BookModel alloc]init] findAll];
-        [self makeTabs:books];
+        //NSMutableArray *books = [[[BookModel alloc]init] findAll];
+        books = [Books factory];
+        [self makeTabs];
     }
     return self;
 }
@@ -59,8 +60,8 @@
         if ([labels[i] tag] == currentLabel.tag) {oldLabelIndex = i;}
     }
     
-    BookModel *newBook = [[[BookModel alloc]init] find:label.tag];
-    BookModel *oldBook = [[[BookModel alloc]init] find:currentLabel.tag];
+    BookModel *newBook = [books find:label.tag];
+    BookModel *oldBook = [books find:currentLabel.tag];
     
     UILabel *newLabel = [self makeTab:newBook :CGRectMake(label.frame.origin.x, 0, TAB_WIDTH_SIZE, 45)];
     newLabel.backgroundColor = [UIColor redColor];
@@ -122,26 +123,26 @@
     [self scrollRectToVisible:rect animated:YES];
 }
 
--(void)rehash:(NSMutableArray *)books {
+-(void)rehash{
     labels = [NSMutableArray array];
-    [self makeTabs:books];
+    [self makeTabs];
     [self changeLabel:labels[0]];
 }
 
--(void)makeTabs :(NSMutableArray *)books{
+-(void)makeTabs{
     [scrollArea removeFromSuperview];
     
     int scrollAreaWidth = self.frame.size.width;
     int tabBarWidthSize = 0;
-    if ([books count] != 0) {
-        for (int i=0; i<[books count]; i++) {
+    if ([books.items count] != 0) {
+        for (int i=0; i<[books.items count]; i++) {
             tabBarWidthSize += (TAB_WIDTH_SIZE + TAB_SPACER_SIZE);
         }
         scrollAreaWidth = tabBarWidthSize;
     }
     
     scrollArea = nil;
-    if ([books count] == 0) {
+    if ([books.items count] == 0) {
         scrollArea = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         UILabel *noBook = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         noBook.text = @"下にスクロールしてデータを同期";
@@ -153,14 +154,14 @@
         [scrollArea addSubview:noBook];
     } else {
         scrollArea = [[UIView alloc] initWithFrame:CGRectMake(0, 0, scrollAreaWidth-2, self.frame.size.height)];
-        for (int i=0; i<[books count]; i++) {
+        for (int i=0; i<[books.items count]; i++) {
             UILabel *label = nil;
             if (self.currentLabel == nil) {
-                label = [self makeTab:books[i] :CGRectMake((TAB_WIDTH_SIZE*i)+(TAB_SPACER_SIZE*i), 0, TAB_WIDTH_SIZE, 45)];
+                label = [self makeTab:books.items[i] :CGRectMake((TAB_WIDTH_SIZE*i)+(TAB_SPACER_SIZE*i), 0, TAB_WIDTH_SIZE, 45)];
                 label.backgroundColor = [UIColor redColor];
                 self.currentLabel = label;
             } else {
-                label = [self makeTab:books[i] :CGRectMake((TAB_WIDTH_SIZE*i)+(TAB_SPACER_SIZE*i), 4, TAB_WIDTH_SIZE, 40)];
+                label = [self makeTab:books.items[i] :CGRectMake((TAB_WIDTH_SIZE*i)+(TAB_SPACER_SIZE*i), 4, TAB_WIDTH_SIZE, 40)];
                 //label.backgroundColor = [UIColor grayColor];
                 UIColor *pink = [UIColor colorWithRed:1.0 green:0.9 blue:1.0 alpha:1.0];
                 label.backgroundColor = pink;

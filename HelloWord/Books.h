@@ -16,6 +16,11 @@
 
 @property (nonatomic, strong, readwrite) NSMutableArray *items;
 
-- (BookModel *)find :(int)bookId;
++ (Books *)factory;
+
+-(BookModel *)find:(int)bookId;
+-(void)rehash :(NSMutableArray *)newBooks;
 
 @end
+
+

@@ -12,24 +12,24 @@
 
 #import "SBJsonParser.h"
 
-#import "WordModel.h"
-#import "BookModel.h"
+#import "Books.h"
 #import "ConfigModel.h"
 #import "WordShowViewController.h"
 #import "WordPlayViewController.h"
 #import "TabBar.h"
 #import "HeaderView.h"
+#import "RefreshView.h"
 
 @interface WordListViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
     UIViewController *invorkedController;
     
+    Books *books;
     NSMutableArray *records;
     int bookId;
     NSMutableArray *newBooks;
-    //UILabel *titleArea;
-    //UILabel *countArea;
     TabBar *tabBar;
     HeaderView *header;
+    RefreshView *refreshView;
     
     int pageIndex;
     int recordeCount;

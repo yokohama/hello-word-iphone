@@ -9,7 +9,7 @@
 #import "WordListViewController.h"
 
 #define HEADER_MARGIN_WIDTH 10
-#define REFRESH_VIEW_HEIGHT 200
+#define REFRESH_VIEW_HEIGHT 400
 
 @implementation WordListViewController
 
@@ -20,6 +20,7 @@
     self = [super init];
     invorkedController = controller;
     bookId = _bookId;
+    books = [Books factory];
     tabBar = _tabBar;
     header = _header;
     responseData = [[NSMutableData alloc] init];
@@ -33,11 +34,11 @@
     if (bookId == 0) {
         bookId = 1;
     }
-    records = [[[WordModel alloc] init] findByBookId:bookId];
+    records = [[books find:bookId] words];
     
-    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, (0- REFRESH_VIEW_HEIGHT), self.view.frame.size.width, REFRESH_VIEW_HEIGHT)];
-    UIColor *pink = [UIColor colorWithRed:1.0 green:0.9 blue:1.0 alpha:1.0];
-    refreshView.backgroundColor = pink;
+    refreshView = [[RefreshView alloc] initWithFrame:CGRectMake(0, (0- REFRESH_VIEW_HEIGHT), self.view.frame.size.width, REFRESH_VIEW_HEIGHT)];
+    //UIColor *pink = [UIColor colorWithRed:1.0 green:0.9 blue:1.0 alpha:1.0];
+    //refreshView.backgroundColor = pink;
     [self.view addSubview:refreshView];
 }
 
@@ -47,13 +48,10 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    WordModel *wm = [[WordModel alloc] init];
-    
-    records = [wm findByBookId:bookId];
-    
-    BookModel *bm = [[[BookModel alloc] init] find:bookId];
+    NSLog(@"hoge");
+    BookModel *bm = [books find:bookId];
+    records = bm.words;
     header.titleArea.text = [NSString stringWithFormat:@"%@(%d)", bm.title, [records count]];
-    //header.countArea.text = [NSString stringWithFormat:@"%d 件", [records count]];
     
     [self.tableView reloadData];
     
@@ -102,6 +100,12 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     float y = scrollView.contentOffset.y;
     if (y < (-50.0)) {
+        
+        //[refreshView scrollRectToVisible:CGRectMake(0, -200, 400, 50) animated:YES];
+        NSLog(@"hogehoge");
+        //TODO:yokohama スクロールしない。スクロールするようにして、refreshViewにダウンロードの進捗を表示。
+        [self.tableView scrollRectToVisible:CGRectMake(0, 100, 400, 50) animated:YES];
+        
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         ConfigModel *cm = [[ConfigModel alloc]init];
         if ([cm isRegisted]) {
@@ -150,13 +154,13 @@
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *jsonDic = [parser objectWithData: responseData];
     NSLog(@"JSON dictionary=%@", [jsonDic description]);
-    NSMutableArray *books = [jsonDic objectForKey:@"books"];
+    NSMutableArray *jsonBooks = [jsonDic objectForKey:@"books"];
     newBooks = [NSMutableArray array];
-    for (int i=0; i<[books count]; i++) {
+    for (int i=0; i<[jsonBooks count]; i++) {
         BookModel *bm = [[BookModel alloc]init];
-        bm.title = [books[i] objectForKey:@"title"];
+        bm.title = [jsonBooks[i] objectForKey:@"title"];
         
-        NSMutableArray *arrayWords = [books[i] objectForKey:@"words"];
+        NSMutableArray *arrayWords = [jsonBooks[i] objectForKey:@"words"];
         for (int iw=0; iw<[arrayWords count]; iw++) {
             NSDictionary *word = arrayWords[iw];
             WordModel *wm = [[WordModel alloc] initWithValues:[word objectForKey:@"word"] answer:[word objectForKey:@"answer"]];
@@ -167,10 +171,9 @@
     }
     
     if ([newBooks count] > 0) {
-        [[[BookModel alloc]init] rehash:newBooks];
-        
-        WordModel *wm = [[WordModel alloc] init];
-        records = [wm findByBookId:bookId];
+        [books rehash:newBooks];
+
+        records = [[books find:bookId] words];
         [self.tableView reloadData];
         
         if ([invorkedController respondsToSelector:@selector(rehash)]) {
