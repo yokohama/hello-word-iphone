@@ -124,6 +124,7 @@
     WordModel *wm = nil;
     NSMutableArray *records = [[NSMutableArray alloc] init];
     NSString *sql= [[NSString alloc] initWithFormat:@"SELECT * FROM words WHERE book_id = %d;", _bookId];
+    NSLog(@"%@", sql);
     [db open];
     FMResultSet *result = [db executeQuery:sql];
     while ([result next]) {

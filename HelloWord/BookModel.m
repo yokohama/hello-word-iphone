@@ -56,6 +56,7 @@
         BookModel *bm = [[BookModel alloc] init];
         bm.recodeId = _resultId;
         bm.title = _title;
+        bm.words = [[[WordModel alloc]init]findByBookId:bm.recodeId];
         [records addObject:bm];
     }
     [db close];

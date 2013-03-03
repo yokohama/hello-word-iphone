@@ -14,8 +14,13 @@
 
 @implementation AppDelegate
 
+//@synthesize books;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //パフォーマンス向上のため、ここでbooksを初期セット
+    //books = [[Books alloc] init];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     UIViewController *ivc = [[WordIndexPageViewController alloc] initWithBookId:1];

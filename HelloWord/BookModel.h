@@ -7,6 +7,7 @@
 //
 
 #import "Db.h"
+#import "WordModel.h"
 
 @interface BookModel : Db{
     int recodeId;

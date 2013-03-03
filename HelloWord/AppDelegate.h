@@ -8,12 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Books.h"
+
 @class ViewController;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+    //Books *books;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) ViewController *viewController;
+
+//@property (nonatomic, strong, readwrite) Books *books;
 
 @end

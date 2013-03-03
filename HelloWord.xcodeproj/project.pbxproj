@@ -72,6 +72,7 @@
 		85B2434216D66804007C0553 /* RegenerateApiDocumentation in Resources */ = {isa = PBXBuildFile; fileRef = 85B2434016D66804007C0553 /* RegenerateApiDocumentation */; };
 		85B2434316D66804007C0553 /* RegenerateCredits in Resources */ = {isa = PBXBuildFile; fileRef = 85B2434116D66804007C0553 /* RegenerateCredits */; };
 		85B2434616D6898D007C0553 /* BookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2434516D6898C007C0553 /* BookModel.m */; };
+		85BC395F16E3421A00F805EB /* Books.m in Sources */ = {isa = PBXBuildFile; fileRef = 85BC395E16E3421A00F805EB /* Books.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +191,8 @@
 		85B2434116D66804007C0553 /* RegenerateCredits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = RegenerateCredits; sourceTree = "<group>"; };
 		85B2434416D6898C007C0553 /* BookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookModel.h; sourceTree = "<group>"; };
 		85B2434516D6898C007C0553 /* BookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookModel.m; sourceTree = "<group>"; };
+		85BC395D16E3421A00F805EB /* Books.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Books.h; sourceTree = "<group>"; };
+		85BC395E16E3421A00F805EB /* Books.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Books.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -448,6 +451,8 @@
 				85B2431616D617B6007C0553 /* ConfigModel.m */,
 				85B2434416D6898C007C0553 /* BookModel.h */,
 				85B2434516D6898C007C0553 /* BookModel.m */,
+				85BC395D16E3421A00F805EB /* Books.h */,
+				85BC395E16E3421A00F805EB /* Books.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -633,6 +638,7 @@
 				8518F63716DC868D00F6685D /* WordIndexPageViewController.m in Sources */,
 				8518F63A16DCFFEB00F6685D /* TabBar.m in Sources */,
 				8518F64616DFB27400F6685D /* HeaderView.m in Sources */,
+				85BC395F16E3421A00F805EB /* Books.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
