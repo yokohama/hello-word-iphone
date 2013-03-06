@@ -202,6 +202,11 @@
 
 - (int)getLabelIndex:(UILabel *)label {
     int *result = nil;
+    for (int i=0; i<[labels count]; i++) {
+        if (label.tag == [labels[i] tag]) {
+            result = i+1;
+        }
+    }
     return result;
 }
 
