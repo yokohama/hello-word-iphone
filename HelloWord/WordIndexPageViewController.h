@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "WordListViewController.h"
 #import "TabBar.h"
 #import "ConfigListViewController.h"
 #import "HeaderView.h"
 #import "Books.h"
+
 
 @interface WordIndexPageViewController : UIViewController <UIPageViewControllerDelegate,UIPageViewControllerDataSource>{
     UIScrollView *pageArea;

@@ -8,10 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8518F61F16DB45F000F6685D /* memo.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8518F61E16DB45F000F6685D /* memo.strings */; };
-		8518F62516DC5A3600F6685D /* TabScrollAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8518F62416DC5A3600F6685D /* TabScrollAreaView.m */; };
 		8518F63116DC6F1B00F6685D /* WordListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8518F63016DC6F1B00F6685D /* WordListViewController.m */; };
 		8518F63716DC868D00F6685D /* WordIndexPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8518F63616DC868D00F6685D /* WordIndexPageViewController.m */; };
-		8518F63A16DCFFEB00F6685D /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8518F63916DCFFEB00F6685D /* TabBar.m */; };
+		8518F63A16DCFFEB00F6685D /* TabBar.m.back in Sources */ = {isa = PBXBuildFile; fileRef = 8518F63916DCFFEB00F6685D /* TabBar.m.back */; };
 		8518F63F16DF9ED100F6685D /* noimage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8518F63E16DF9ED100F6685D /* noimage.jpg */; };
 		8518F64316DFB0A600F6685D /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 8518F64216DFB0A600F6685D /* play.png */; };
 		8518F64616DFB27400F6685D /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8518F64516DFB27400F6685D /* HeaderView.m */; };
@@ -52,6 +51,8 @@
 		85A327BA16BD701900FC3B3F /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A327B016BD701900FC3B3F /* FMDatabaseQueue.m */; };
 		85A327BB16BD701900FC3B3F /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A327B216BD701900FC3B3F /* FMResultSet.m */; };
 		85A327BC16BD701900FC3B3F /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A327B216BD701900FC3B3F /* FMResultSet.m */; };
+		85B2212216E7227D005F81AE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85B2212116E7227D005F81AE /* QuartzCore.framework */; };
+		85B2212516E74164005F81AE /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2212416E74164005F81AE /* TabBar.m */; };
 		85B242F916CBF0B8007C0553 /* ConfigListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B242F816CBF0B8007C0553 /* ConfigListViewController.m */; };
 		85B2431116D47089007C0553 /* AccountConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2431016D47089007C0553 /* AccountConfigViewController.m */; };
 		85B2431716D617B6007C0553 /* ConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B2431616D617B6007C0553 /* ConfigModel.m */; };
@@ -89,14 +90,12 @@
 /* Begin PBXFileReference section */
 		8518F61C16DB446000F6685D /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		8518F61E16DB45F000F6685D /* memo.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = memo.strings; sourceTree = "<group>"; };
-		8518F62316DC5A3600F6685D /* TabScrollAreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabScrollAreaView.h; sourceTree = "<group>"; };
-		8518F62416DC5A3600F6685D /* TabScrollAreaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabScrollAreaView.m; sourceTree = "<group>"; };
 		8518F62F16DC6F1A00F6685D /* WordListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordListViewController.h; sourceTree = "<group>"; };
 		8518F63016DC6F1B00F6685D /* WordListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordListViewController.m; sourceTree = "<group>"; };
 		8518F63516DC868C00F6685D /* WordIndexPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordIndexPageViewController.h; sourceTree = "<group>"; };
 		8518F63616DC868D00F6685D /* WordIndexPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordIndexPageViewController.m; sourceTree = "<group>"; };
 		8518F63816DCFFEB00F6685D /* TabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBar.h; sourceTree = "<group>"; };
-		8518F63916DCFFEB00F6685D /* TabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBar.m; sourceTree = "<group>"; };
+		8518F63916DCFFEB00F6685D /* TabBar.m.back */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TabBar.m.back; sourceTree = "<group>"; };
 		8518F63E16DF9ED100F6685D /* noimage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = noimage.jpg; sourceTree = "<group>"; };
 		8518F64216DFB0A600F6685D /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		8518F64416DFB27400F6685D /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
@@ -155,6 +154,8 @@
 		85A327B016BD701900FC3B3F /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
 		85A327B116BD701900FC3B3F /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		85A327B216BD701900FC3B3F /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		85B2212116E7227D005F81AE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		85B2212416E74164005F81AE /* TabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBar.m; sourceTree = "<group>"; };
 		85B242F716CBF0B8007C0553 /* ConfigListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigListViewController.h; sourceTree = "<group>"; };
 		85B242F816CBF0B8007C0553 /* ConfigListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigListViewController.m; sourceTree = "<group>"; };
 		85B2430C16D20004007C0553 /* hello_word.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = hello_word.db; sourceTree = "<group>"; };
@@ -203,6 +204,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85B2212216E7227D005F81AE /* QuartzCore.framework in Frameworks */,
 				85A3279F16BD621F00FC3B3F /* libsqlite3.0.dylib in Frameworks */,
 				85A3274816BD55D100FC3B3F /* UIKit.framework in Frameworks */,
 				85A3274A16BD55D100FC3B3F /* Foundation.framework in Frameworks */,
@@ -269,6 +271,7 @@
 		85A3273816BD55D100FC3B3F = {
 			isa = PBXGroup;
 			children = (
+				85B2212116E7227D005F81AE /* QuartzCore.framework */,
 				85A3279E16BD621F00FC3B3F /* libsqlite3.0.dylib */,
 				85A3274D16BD55D100FC3B3F /* HelloWord */,
 				85A3277416BD55D100FC3B3F /* HelloWordTests */,
@@ -472,12 +475,11 @@
 		85ED392016D8B22B00887029 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				85299CAC16C3FDD8000B5DBE /* TextFieldFactory.m */,
 				85299CAB16C3FDD8000B5DBE /* TextFieldFactory.h */,
-				8518F62316DC5A3600F6685D /* TabScrollAreaView.h */,
-				8518F62416DC5A3600F6685D /* TabScrollAreaView.m */,
+				85299CAC16C3FDD8000B5DBE /* TextFieldFactory.m */,
 				8518F63816DCFFEB00F6685D /* TabBar.h */,
-				8518F63916DCFFEB00F6685D /* TabBar.m */,
+				85B2212416E74164005F81AE /* TabBar.m */,
+				8518F63916DCFFEB00F6685D /* TabBar.m.back */,
 				8518F64416DFB27400F6685D /* HeaderView.h */,
 				8518F64516DFB27400F6685D /* HeaderView.m */,
 				85BC396016E399E400F805EB /* RefreshView.h */,
@@ -638,13 +640,13 @@
 				85B2433A16D667F5007C0553 /* SBJsonStreamWriterState.m in Sources */,
 				85B2433B16D667F5007C0553 /* SBJsonWriter.m in Sources */,
 				85B2434616D6898D007C0553 /* BookModel.m in Sources */,
-				8518F62516DC5A3600F6685D /* TabScrollAreaView.m in Sources */,
 				8518F63116DC6F1B00F6685D /* WordListViewController.m in Sources */,
 				8518F63716DC868D00F6685D /* WordIndexPageViewController.m in Sources */,
-				8518F63A16DCFFEB00F6685D /* TabBar.m in Sources */,
+				8518F63A16DCFFEB00F6685D /* TabBar.m.back in Sources */,
 				8518F64616DFB27400F6685D /* HeaderView.m in Sources */,
 				85BC395F16E3421A00F805EB /* Books.m in Sources */,
 				85BC396216E399E400F805EB /* RefreshView.m in Sources */,
+				85B2212516E74164005F81AE /* TabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

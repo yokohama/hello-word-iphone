@@ -15,19 +15,20 @@
 
 @interface TabBar : UIScrollView {
     NSMutableArray *labels;
-    UILabel *currentLabel;
+    UIView *currentLabel;
     UIViewController *delegateController;
     UIView *scrollArea;
     Books *books;
+    UIColor *pink;
 }
 
 @property (nonatomic, strong, readwrite) NSMutableArray *labels;
-@property (nonatomic, strong, readwrite) UILabel *currentLabel;
+@property (nonatomic, strong, readwrite) UIView *currentLabel;
 
 - (id)initWithFrame:(CGRect)frame delegateController:(UIViewController *)controller;
-- (UILabel *)findByBookId:(int)_bookId;
-- (void)changeLabel :(UILabel *)label;
+- (UIView *)findByBookId:(int)_bookId;
+- (void)changeLabel :(UIView *)label;
 - (void)rehash;
-- (int)getLabelIndex :(UILabel *)label;
+- (int)getLabelIndex :(UIView *)label;
 
 @end
