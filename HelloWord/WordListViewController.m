@@ -8,21 +8,19 @@
 
 #import "WordListViewController.h"
 
-#define HEADER_MARGIN_WIDTH 10
 #define REFRESH_VIEW_HEIGHT 400
 
 @implementation WordListViewController
 
-@synthesize pageIndex, records, bookId, tabBar, refreshView;
+@synthesize pageIndex, records, bookId, refreshView;
 
--(id)initWithBookId:(int)_bookId invorked:(UIViewController *)controller tabBar:(TabBar *)_tabBar header:(HeaderView *)_header
+-(id)initWithBookId:(int)_bookId invorked:(UIViewController *)controller titleArea:(UILabel *)label
 {
     self = [super init];
     invorkedController = controller;
+    titleArea = label;
     bookId = _bookId;
     books = [Books factory];
-    tabBar = _tabBar;
-    header = _header;
     responseData = [[NSMutableData alloc] init];
     return self;
 }
@@ -46,10 +44,9 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    NSLog(@"hoge");
     BookModel *bm = [books find:bookId];
     records = bm.words;
-    header.titleArea.text = [NSString stringWithFormat:@"%@(%d)", bm.title, [records count]];
+    titleArea.text = [NSString stringWithFormat:@"%@(%d)", bm.title, [records count]];
     
     [self.tableView reloadData];
     
@@ -99,11 +96,10 @@
     if (y < (-50.0)) {
         
         //[refreshView scrollRectToVisible:CGRectMake(0, -200, 400, 50) animated:YES];
-        NSLog(@"hogehoge");
         //TODO:yokohama スクロールしない。スクロールするようにして、refreshViewにダウンロードの進捗を表示。
-        [self.tableView scrollRectToVisible:CGRectMake(0, 100, 400, 50) animated:YES];
+        //[self.tableView scrollRectToVisible:CGRectMake(0, 100, 400, 50) animated:YES];
+        //[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         ConfigModel *cm = [[ConfigModel alloc]init];
         if ([cm isRegisted]) {
             
@@ -112,7 +108,7 @@
             NSString *urlstr = [[NSString alloc] initWithFormat:@"%@/api/books", [plist objectForKey:@"API URL"]];
             
             //TODO:plistが更新されないのでハードコーディング
-            urlstr = @"http://localhost:3000/api/books";
+            //urlstr = @"http://localhost:3000/api/books";
             
             NSString *postData = [[NSString alloc] initWithFormat:@"user[email]=%@&user[password]=%@", cm.email, cm.password];
             NSURL *url = [NSURL URLWithString:urlstr];
@@ -147,7 +143,6 @@
 
 //通信完了時の処理
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"hoge3");
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *jsonDic = [parser objectWithData: responseData];
     NSLog(@"JSON dictionary=%@", [jsonDic description]);

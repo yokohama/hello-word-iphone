@@ -37,15 +37,15 @@
     CGRect r = [[UIScreen mainScreen] bounds];
     CGFloat h = r.size.height;
     
-    UILabel *wl = [[UILabel alloc] init];
-    wl.frame = CGRectMake(10, h/2-80, self.view.frame.size.width-10, 80);
+    wl = [[UILabel alloc] init];
+    wl.frame = CGRectMake(10, h/2-80, self.view.frame.size.width-20, 80);
     wl.text = word;
     wl.font =[UIFont systemFontOfSize:30.0];
     wl.textAlignment = NSTextAlignmentCenter;
     wl.numberOfLines = 0;
     [self.view addSubview:wl];
     
-    al = [[UITextView alloc] initWithFrame:CGRectMake(10, 30, self.view.frame.size.width-10, 400)];
+    al = [[UITextView alloc] initWithFrame:CGRectMake(10, 30, self.view.frame.size.width-20, self.view.frame.size.height-80)];
     al.editable = NO;
     al.font =[UIFont systemFontOfSize:16.0];
     al.text = answer;
@@ -55,6 +55,9 @@
     //シングルタップ
     UITapGestureRecognizer *singleFingerDTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     [self.view addGestureRecognizer:singleFingerDTap];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
 }
 
 - (void)didReceiveMemoryWarning

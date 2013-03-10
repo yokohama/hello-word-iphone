@@ -28,17 +28,48 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor blackColor];
+    
     tabBar = [[TabBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 35) delegateController:self];
     [self.view addSubview:tabBar];
     
-    header = [[HeaderView alloc] initWithFrame:CGRectMake(0, tabBar.frame.size.height, self.view.frame.size.width, 60) invorked:self];
-    [self.view addSubview:header];
+    header = [[UIView alloc] initWithFrame:CGRectMake(0, 35, self.view.frame.size.width, 60)];
+    header.backgroundColor = [UIColor redColor];
+    header.layer.shadowOpacity = 0.4;
+    header.layer.shadowOffset = CGSizeMake(0.0, 1.0);
     
+    alpha = [[UIView alloc] initWithFrame:CGRectMake(0, 60, header.frame.size.width, 5)];
+    alpha.backgroundColor = [UIColor redColor];
+    alpha.layer.shadowOpacity = 1.0;
+    alpha.layer.shadowOffset = CGSizeMake(0.0, 1.0);
+    [header addSubview:alpha];
+    
+    UIView *imageArea = [[UIView alloc] initWithFrame:CGRectMake(5, 5, 50, 50)];
+    UIImage *image = [UIImage imageNamed:@"library.png"];
+    imageArea.backgroundColor = [UIColor colorWithPatternImage:image];
+    imageArea.layer.borderColor = [[UIColor alloc] initWithRed:0.3 green:0.3 blue:0.3 alpha:0.5].CGColor;
+    imageArea.layer.borderWidth = 1.0;
+    imageArea.layer.shadowOpacity = 0.2;
+    imageArea.layer.shadowOffset = CGSizeMake(2.0, 2.0);
+    [header addSubview:imageArea];
+    
+    titleArea = [[UILabel alloc] initWithFrame:CGRectMake(70, 5, 190, 50)];
+    titleArea.backgroundColor = [UIColor redColor];
+    titleArea.font = [UIFont fontWithName:@"AppleGothic" size:16];
+    titleArea.numberOfLines = 0;
+    [header addSubview:titleArea];
+    
+    UIImage *playImage = [UIImage imageNamed:@"play.png"];
+    playButton = [[UIButton alloc] initWithFrame:CGRectMake(265, 5, 50, 50)];
+    [playButton addTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchDown];
+    [playButton setBackgroundImage:playImage forState:UIControlStateNormal];
+    [header addSubview:playButton];
+    
+    [self.view addSubview:header];
+
     pageArea = [[UIScrollView alloc] initWithFrame:CGRectMake(0, tabBar.frame.size.height+header.frame.size.height, self.view.frame.size.width, self.view.frame.size.height)];
     [self makePageView:CGRectMake(0, 0, pageArea.frame.size.width, pageArea.frame.size.height)];
     [pageArea addSubview:pageViewController.view];
-    
     [self.view addSubview:pageArea];
     
     toolArea = [[UIView alloc] initWithFrame:CGRectMake(0, 420, self.view.frame.size.width, 40)];
@@ -95,7 +126,7 @@
 }
 
 - (void)setWordListViewController:(int)_bookId{
-    wordListViewController = [[WordListViewController alloc] initWithBookId:_bookId invorked:self tabBar:tabBar header:header];
+    wordListViewController = [[WordListViewController alloc] initWithBookId:_bookId invorked:self titleArea:titleArea];
     wordListViewController.pageIndex = pageIndex;
 }
 
@@ -216,8 +247,9 @@
     tabBar.frame = CGRectMake(0, 0, w, 35);
     tabBar.noBook.frame = CGRectMake(tabBar.frame.origin.x, tabBar.frame.origin.y, tabBar.frame.size.width, tabBar.frame.size.height);
     header.frame = CGRectMake(0, tabBar.frame.size.height, w, 60);
-    header.alpha.frame = CGRectMake(0, 60, header.frame.size.width, 5);
-    header.playButton.frame = CGRectMake(w-55, 5, 50, 50);
+    alpha.frame = CGRectMake(0, 60, header.frame.size.width, 5);
+    playButton.frame = CGRectMake(w-55, 5, 50, 50);
+    titleArea.frame =CGRectMake(60, 5, header.frame.size.width-120, 50);
     pageArea.frame = CGRectMake(0, tabBar.frame.size.height+header.frame.size.height, w, self.view.frame.size.height);
 }
 

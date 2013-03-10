@@ -17,8 +17,10 @@
     int pageMax;
     UISlider *slider;
     
+    UIButton *close;
     NSArray *records;
     
+    UIView *pageArea;
     UIView *playBarArea;
     UILabel *point;
 }

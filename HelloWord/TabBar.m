@@ -24,6 +24,7 @@
 
 - (id)initWithFrame:(CGRect)frame delegateController:(UIViewController *)controller
 {
+
     self = [super initWithFrame:frame];
     if (self) {
         pink = [UIColor colorWithRed:1.0 green:0.9 blue:1.0 alpha:1.0];

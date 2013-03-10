@@ -8,8 +8,6 @@
 
 #import "AppDelegate.h"
 
-//#import "WordAddViewController.h"
-//#import "WordIndexViewController.h"
 #import "WordIndexPageViewController.h"
 
 @implementation AppDelegate

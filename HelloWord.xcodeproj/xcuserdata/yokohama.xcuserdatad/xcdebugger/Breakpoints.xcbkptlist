@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HelloWord/WordIndexPageViewController.h"
-         timestampString = "384273976.100747"
+         timestampString = "384618987.634274"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "39"
-         endingLineNumber = "39"
+         startingLineNumber = "42"
+         endingLineNumber = "42"
          landmarkName = "-setWordListViewController:"
          landmarkType = "4">
       </FileBreakpoint>
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HelloWord/TabBar.m"
-         timestampString = "384273139.542662"
+         timestampString = "384613095.019276"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "261"
-         endingLineNumber = "261"
+         startingLineNumber = "262"
+         endingLineNumber = "262"
          landmarkName = "@implementation TabBar"
          landmarkType = "3">
       </FileBreakpoint>

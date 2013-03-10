@@ -13,7 +13,6 @@
 #import "WordListViewController.h"
 #import "TabBar.h"
 #import "ConfigListViewController.h"
-#import "HeaderView.h"
 #import "Books.h"
 
 
@@ -26,7 +25,11 @@
     int bookId;
     Books *books;
     
-    HeaderView *header;
+    UIView *header;
+    UILabel *titleArea;
+    UIView *alpha;
+    UIButton *playButton;
+    
     UIView *toolArea;
     
     int pageIndex;

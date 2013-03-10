@@ -12,6 +12,8 @@
 @interface WordTicketViewController : UIViewController{
     BOOL isSurface;
     UITextView *al;
+    
+    UILabel *wl;
 }
 
 @property int pageIndex, recordeCount;
