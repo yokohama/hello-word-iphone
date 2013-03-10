@@ -44,8 +44,8 @@
         [self addSubview:titleArea];
         
         UIImage *playImage = [UIImage imageNamed:@"play.png"];
-        playButton = [[UIButton alloc] initWithFrame:CGRectMake(265, 5, 50, 50)];
-        playButton = [[UIButton alloc] initWithFrame:CGRectMake(265, 5, 50, 50)];
+        playButton = [[UIButton alloc] initWithFrame:CGRectMake(265, 5, 50, 50)];      
+        [playButton addTarget:invorkedController action:@selector(play:) forControlEvents:UIControlEventTouchDown];
         [playButton setBackgroundImage:playImage forState:UIControlStateNormal];
         
         [self addSubview:playButton];
