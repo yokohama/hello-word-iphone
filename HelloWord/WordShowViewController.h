@@ -11,16 +11,17 @@
 
 #import "WordModel.h"
 
-@interface WordShowViewController : UIViewController <UITabBarDelegate> {
+@interface WordShowViewController : UIViewController {
     WordModel *wordModel;
+    UIScrollView *show;
     UILabel *word;
-    UITextView *answer;
+    UILabel *answer;
+    UILabel *spacer;
+    UILabel *line;
 }
 
 -(id)initWithWordModel:(WordModel *)w;
 
-@property(nonatomic, strong, readwrite) UILabel *word;
-@property(nonatomic, strong, readwrite) UITextView *answer;
 @property(nonatomic, strong, readwrite) WordModel *wordModel;
 
 @end

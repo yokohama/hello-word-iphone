@@ -13,7 +13,7 @@
 
 @implementation WordListViewController
 
-@synthesize pageIndex, records, bookId, tabBar;
+@synthesize pageIndex, records, bookId, tabBar, refreshView;
 
 -(id)initWithBookId:(int)_bookId invorked:(UIViewController *)controller tabBar:(TabBar *)_tabBar header:(HeaderView *)_header
 {
@@ -37,8 +37,6 @@
     records = [[books find:bookId] words];
     
     refreshView = [[RefreshView alloc] initWithFrame:CGRectMake(0, (0- REFRESH_VIEW_HEIGHT), self.view.frame.size.width, REFRESH_VIEW_HEIGHT)];
-    //UIColor *pink = [UIColor colorWithRed:1.0 green:0.9 blue:1.0 alpha:1.0];
-    //refreshView.backgroundColor = pink;
     [self.view addSubview:refreshView];
 }
 
@@ -62,7 +60,6 @@
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"hgoe4 %@", records[indexPath.row]);
     WordShowViewController *next = [[WordShowViewController alloc] initWithWordModel:records[indexPath.row]];
     [self presentViewController: next animated:YES completion: nil];
 }
@@ -115,7 +112,7 @@
             NSString *urlstr = [[NSString alloc] initWithFormat:@"%@/api/books", [plist objectForKey:@"API URL"]];
             
             //TODO:plistが更新されないのでハードコーディング
-            //urlstr = @"http://localhost:3000/api/books";
+            urlstr = @"http://localhost:3000/api/books";
             
             NSString *postData = [[NSString alloc] initWithFormat:@"user[email]=%@&user[password]=%@", cm.email, cm.password];
             NSURL *url = [NSURL URLWithString:urlstr];

@@ -29,7 +29,6 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
     tabBar = [[TabBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 35) delegateController:self];
     [self.view addSubview:tabBar];
     
@@ -42,7 +41,7 @@
     
     [self.view addSubview:pageArea];
     
-    UIView *toolArea = [[UIView alloc] initWithFrame:CGRectMake(0, 420, self.view.frame.size.width, 40)];
+    toolArea = [[UIView alloc] initWithFrame:CGRectMake(0, 420, self.view.frame.size.width, 40)];
     toolArea.layer.shadowOpacity = 0.4;
     toolArea.layer.shadowOffset = CGSizeMake(0.0, -2.0);
     UIImage *toolAreaImage = [UIImage imageNamed:@"playarea.png"];
@@ -66,7 +65,6 @@
     
     for (int i=0; i<[books.items count]; i++) {
         if ([books.items[i] recodeId] == bookId) {
-            //NSLog(@"bookId=%d recodeId=%d", bookId, [books.items[i] recodeId]);
             pageIndex = i+1;
         }
     }
@@ -88,8 +86,12 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self.navigationController setNavigationBarHidden:YES];
-    [self.navigationController setToolbarHidden:NO];
+    int direction = self.interfaceOrientation;
+    if(direction == UIInterfaceOrientationPortrait || direction == UIInterfaceOrientationPortraitUpsideDown){
+        [self orientationFit:self.view.frame.size.width];
+    } else {
+        [self orientationFit:self.view.frame.size.width];
+    }
 }
 
 - (void)setWordListViewController:(int)_bookId{
@@ -198,10 +200,32 @@
     } else {
         WordPlayViewController *pvc = [[WordPlayViewController alloc] initWithNibName:nil bundle:nil];
         pvc.records = bm.words;
-        //[self.navigationController pushViewController:pvc animated:YES];
         [self presentViewController: pvc animated:YES completion: nil];
     }
 }
+
+-(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration {
+    if(interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight){
+        [self orientationFit:self.view.frame.size.height];
+    } else {
+        [self orientationFit:self.view.frame.size.width];
+    }
+}
+
+-(void)orientationFit :(int)w{
+    tabBar.frame = CGRectMake(0, 0, w, 35);
+    tabBar.noBook.frame = CGRectMake(tabBar.frame.origin.x, tabBar.frame.origin.y, tabBar.frame.size.width, tabBar.frame.size.height);
+    header.frame = CGRectMake(0, tabBar.frame.size.height, w, 60);
+    header.alpha.frame = CGRectMake(0, 60, header.frame.size.width, 5);
+    header.playButton.frame = CGRectMake(w-55, 5, 50, 50);
+    pageArea.frame = CGRectMake(0, tabBar.frame.size.height+header.frame.size.height, w, self.view.frame.size.height);
+}
+
+/*
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
+}
+ */
 
 @end
 

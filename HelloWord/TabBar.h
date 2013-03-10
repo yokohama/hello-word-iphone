@@ -19,11 +19,13 @@
     UIViewController *delegateController;
     UIView *scrollArea;
     Books *books;
+    UILabel *noBook;
     UIColor *pink;
 }
 
 @property (nonatomic, strong, readwrite) NSMutableArray *labels;
 @property (nonatomic, strong, readwrite) UIView *currentLabel;
+@property (nonatomic, strong, readwrite) UILabel *noBook;
 
 - (id)initWithFrame:(CGRect)frame delegateController:(UIViewController *)controller;
 - (UIView *)findByBookId:(int)_bookId;

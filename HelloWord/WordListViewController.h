@@ -42,6 +42,7 @@
 @property (nonatomic, strong, readwrite) NSMutableArray *records;
 @property (nonatomic, strong, readonly) TabBar *tabBar;
 @property int bookId;
+@property (nonatomic, strong, readwrite) RefreshView *refreshView;
 
 //-(id)initWithBookId: (int)_bookId invorked:(UIViewController *)controller;
 -(id)initWithBookId :(int)_bookId invorked:(UIViewController *)controller tabBar:(TabBar *)_tabBar header:(HeaderView *)_header;

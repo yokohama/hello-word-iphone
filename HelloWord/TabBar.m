@@ -20,7 +20,7 @@
 
 @implementation TabBar
 
-@synthesize labels, currentLabel;
+@synthesize labels, currentLabel, noBook;
 
 - (id)initWithFrame:(CGRect)frame delegateController:(UIViewController *)controller
 {
@@ -40,6 +40,10 @@
         [self makeTabs];
     }
     return self;
+}
+
+- (void)orientationPortraitSide{
+    
 }
 
 -(UIView *)findByBookId:(int)_bookId {
@@ -144,7 +148,7 @@
     scrollArea = nil;
     if ([books.items count] == 0) {
         scrollArea = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-        UILabel *noBook = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        noBook = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         noBook.text = @"下にスクロールしてデータを同期";
         noBook.backgroundColor = [UIColor whiteColor];
         noBook.font = [UIFont fontWithName:@"AppleGothic" size:10];

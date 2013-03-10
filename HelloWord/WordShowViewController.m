@@ -12,12 +12,18 @@
 
 @implementation WordShowViewController
 
-@synthesize wordModel, word, answer;
+@synthesize wordModel;
 
 
 - (id)initWithWordModel:(WordModel *)w {
     self = [super init];
-    wordModel = w;
+    if (self) {
+        wordModel = w;
+        word = [[UILabel alloc]init];
+        answer = [[UILabel alloc]init];
+        spacer = [[UILabel alloc]init];
+        line = [[UILabel alloc]init];
+    }
     return self;
 }
 
@@ -35,41 +41,7 @@
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    
-    int boardWidth = self.view.frame.size.width - 20;
-    //int boardHeight = self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height - self.navigationController.toolbar.frame.size.height - 40;
-    int boardHeight = self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height - 20;
-    
-    UIView *board = [[UIView alloc] initWithFrame:CGRectMake(10, 10, boardWidth, boardHeight)];
-    board.backgroundColor = [UIColor whiteColor];
-    board.layer.borderColor = [[UIColor alloc] initWithRed:0.3 green:0.3 blue:0.3 alpha:0.5].CGColor;
-    board.layer.borderWidth = 1.0;
-    board.layer.cornerRadius = 8;
-    board.layer.shadowOpacity = 0.2;
-    board.layer.shadowOffset = CGSizeMake(2.0, 4.0);
-    [self.view addSubview:board];
-    
-    word = [[UILabel alloc] init];
-    word.frame = CGRectMake(10, 10, boardWidth-20, 50);
-    [board addSubview:word];
-    
-    UILabel *description = [[UILabel alloc] init];
-    description.frame = CGRectMake(10, 70, boardWidth-20, 50);
-    description.text = @" <意味>";
-    
-    //TODO:タブのラベルに影をつける練習をここでやっている
-    description.layer.shadowColor = [UIColor blackColor].CGColor;
-    description.layer.shadowOpacity = 0.2; // 濃さを指定
-    description.layer.shadowOffset = CGSizeMake(10.0, 10.0);
-    //TODO:ここまで
-    
-    [board addSubview:description];
-    
-    CGRect rect = CGRectMake(10, 110, boardWidth-20, 200);
-    answer = [[UITextView alloc] initWithFrame:rect];
-    answer.editable = NO;
-    answer.font =[UIFont systemFontOfSize:16.0];
-    [board addSubview:answer];
+    show = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     
     //シングルタップ
     //TODO:上から下へのスクロールにする
@@ -80,12 +52,44 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    show.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    int direction = self.interfaceOrientation;
+    if(direction == UIInterfaceOrientationPortrait || direction == UIInterfaceOrientationPortraitUpsideDown){
+        [self orientationFit:self.view.frame.size.width];
+    } else {
+        [self orientationFit:self.view.frame.size.width];
+    }
+}
+
+- (void)orientationFit:(int)w{
+    word.frame = CGRectMake(20, 20, w-30, 20);
     word.text = wordModel.word;
+    [word setNumberOfLines:0];
+    [word sizeToFit];
+    
+    line.frame = CGRectMake(10, 20, 4, word.frame.size.height);
+    line.backgroundColor = [UIColor redColor];
+    
+    spacer.frame = CGRectMake(0, word.frame.origin.y+word.frame.size.height, w, 20);
+    
+    answer.frame = CGRectMake(10, spacer.frame.origin.y+spacer.frame.size.height, w-20, 20);
     answer.text = wordModel.answer;
+    [answer setNumberOfLines:0];
+    [answer sizeToFit];
+    
+    //BUG:yokohama 長い文字列の場合、横にしたときに、サイズがあわない。
+    CGSize size = CGSizeMake(w, word.frame.origin.y+word.frame.size.height+spacer.frame.size.height+answer.frame.size.height);
+    
+    show.contentSize = size;
+    [self.view addSubview:show];
+    
+    [show addSubview:word];
+    [show addSubview:line];
+    [show addSubview:spacer];
+    [show addSubview:answer];
 }
 
 - (void)edit{
@@ -117,6 +121,16 @@
 
 - (void)handleSingleTap:(UIGestureRecognizer *)sender {
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+-(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration {
+    if(interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight){
+        show.frame = CGRectMake(0, 0, self.view.frame.size.height, self.view.frame.size.height);
+        [self orientationFit:show.frame.size.height];
+    } else {
+        show.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        [self orientationFit:show.frame.size.width];
+    }
 }
 
 @end

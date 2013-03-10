@@ -10,7 +10,7 @@
 
 @implementation HeaderView
 
-@synthesize imageArea, titleArea, playButton;
+@synthesize imageArea, titleArea, playButton, alpha;
 
 - (id)initWithFrame:(CGRect)frame invorked:(UIViewController *)controller
 {
@@ -22,12 +22,12 @@
         self.layer.shadowOpacity = 0.4;
         self.layer.shadowOffset = CGSizeMake(0.0, 1.0);
         
-        UIView *alpha = [[UIView alloc] initWithFrame:CGRectMake(0, 60, 400, 5)];
+        alpha = [[UIView alloc] initWithFrame:CGRectMake(0, 60, self.frame.size.width, 5)];
         alpha.backgroundColor = [UIColor redColor];
         alpha.layer.shadowOpacity = 1.0;
         alpha.layer.shadowOffset = CGSizeMake(0.0, 1.0);
         [self addSubview:alpha];
-        
+         
         imageArea = [[UIView alloc] initWithFrame:CGRectMake(5, 5, 50, 50)];
         UIImage *image = [UIImage imageNamed:@"library.png"];
         imageArea.backgroundColor = [UIColor colorWithPatternImage:image];
@@ -42,28 +42,15 @@
         titleArea.font = [UIFont fontWithName:@"AppleGothic" size:16];
         titleArea.numberOfLines = 0;
         [self addSubview:titleArea];
-        /*
-        countArea = [[UILabel alloc] initWithFrame:CGRectMake(70, 35, 190, 20)];
-        countArea.backgroundColor = [UIColor redColor];
-        countArea.font = [UIFont fontWithName:@"AppleGothic" size:12];
-        [self addSubview:countArea];
-        */
+        
         UIImage *playImage = [UIImage imageNamed:@"play.png"];
         playButton = [[UIButton alloc] initWithFrame:CGRectMake(265, 5, 50, 50)];
-        [playButton addTarget:invorkedController action:@selector(play:) forControlEvents:UIControlEventTouchDown];
+        playButton = [[UIButton alloc] initWithFrame:CGRectMake(265, 5, 50, 50)];
         [playButton setBackgroundImage:playImage forState:UIControlStateNormal];
+        
         [self addSubview:playButton];
     }
     return self;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

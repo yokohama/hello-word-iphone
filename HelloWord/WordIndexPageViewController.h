@@ -24,10 +24,10 @@
     
     TabBar *tabBar;
     int bookId;
-    //NSMutableArray *books;
     Books *books;
     
     HeaderView *header;
+    UIView *toolArea;
     
     int pageIndex;
     int pageMax;
@@ -35,6 +35,7 @@
 }
 
 - (id)initWithBookId :(int)_bookId;
+
 - (void)setWordListViewController :(int)_bookId;
 
 - (void)rehash;
